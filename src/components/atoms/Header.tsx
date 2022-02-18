@@ -3,8 +3,16 @@ import { css } from "@emotion/react";
 
 const Header: FC = () => {
   return (
-    <div css={css``}>
-      <h1>Hello world</h1>
+    <div
+      css={css`
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      `}
+    >
+      <div>Navigation</div>
+      <div>Logo</div>
+      <div>Links</div>
     </div>
   );
 };
