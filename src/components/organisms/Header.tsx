@@ -14,7 +14,7 @@ const Header: FC = () => {
         height: 4.5em;
         font-size: 0.875em;
         font-weight: 500;
-        background-color: blue;
+        background-color: #c698fa;
       `}
     >
       <div
