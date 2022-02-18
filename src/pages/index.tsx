@@ -2,7 +2,7 @@ import type { NextPage } from "next";
 import Head from "next/head";
 import Image from "next/image";
 import { css } from "@emotion/react";
-import { Header } from "@lib/atoms";
+import { Header } from "@lib/organisms";
 
 const Home: NextPage = () => {
   return (

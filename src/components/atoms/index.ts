@@ -1,3 +1,3 @@
-import { Header } from "./Header";
+import { TranslucentNavLink } from "./TranslucentNavLink";
 
-export { Header };
+export { TranslucentNavLink };

@@ -17,7 +17,11 @@
     "jsxImportSource": "@emotion/react",
     "baseUrl": ".",
     "paths": {
-      "@lib/atoms": ["./src/components/atoms"]
+      "@app/styles": ["./src/styles/globals.ts"],
+      "@lib/atoms": ["./src/components/atoms"],
+      "@lib/molecules": ["./src/components/molecules"],
+      "@lib/organisms": ["./src/components/organisms"],
+      "@lib/templates": ["./src/components/templates"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
