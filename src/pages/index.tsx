@@ -2,8 +2,8 @@ import type { NextPage } from "next";
 import Head from "next/head";
 import { css } from "@emotion/react";
 import { Header } from "@lib/organisms";
+import { Hero } from "@lib/templates";
 import { HeroBgCircles } from "@lib/atoms";
-import Colors from "@app/styles/colors";
 
 const Home: NextPage = () => {
   return (
@@ -21,29 +21,8 @@ const Home: NextPage = () => {
         `}
       >
         <Header />
-        <h1
-          css={css`
-            font-size: 4.5em;
-            font-weight: 800;
-            width: 540px;
-            line-height: 136%;
-            color: ${Colors.gray900};
-            margin: 0;
-          `}
-        >
-          Get your own OctoProfile
-        </h1>
-        <p
-          css={css`
-            font-size: 1.125em;
-            width: 540px;
-            margin: 0.75em 0;
-            color: ${Colors.gray900};
-          `}
-        >
-          A nicer look at your GitHub profile and repositories. With data
-          visualizations of your languages and stars.
-        </p>
+        <Hero />
+        <p>Hello</p>
       </div>
       <HeroBgCircles />
     </div>
