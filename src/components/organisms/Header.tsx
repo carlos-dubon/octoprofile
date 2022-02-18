@@ -3,6 +3,7 @@ import { css } from "@emotion/react";
 import Link from "next/link";
 import Image from "next/image";
 import { TranslucentNavLink } from "../atoms/TranslucentNavLink";
+import Colors from "@app/styles/colors";
 
 const Header: FC = () => {
   return (
@@ -20,6 +21,7 @@ const Header: FC = () => {
         css={css`
           display: flex;
           gap: 2.5em;
+          color: ${Colors.gray900};
         `}
       >
         <Link href="https://github.com/carlos-dubon/octoprofile">

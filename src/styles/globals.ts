@@ -1,7 +1,19 @@
 import { css, SerializedStyles } from "@emotion/react";
+import Screens from "@app/styles/breakpoints";
+
+const textSelectionColor = "rgb(198,152,250,0.4)";
 
 const globalStyles: SerializedStyles = css`
   @import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap");
+
+  /* Text Selection Color */
+  ::selection {
+    background: ${textSelectionColor};
+  }
+  /* Code for Firefox */
+  ::-moz-selection {
+    background: ${textSelectionColor};
+  }
 
   html,
   body {
@@ -31,20 +43,20 @@ const globalStyles: SerializedStyles = css`
     max-width: 100vw;
     padding-left: 1.75rem;
     padding-right: 1.75rem;
-    @media (min-width: 640px) {
-      max-width: 640px;
+    @media (min-width: ${Screens.sm}px) {
+      max-width: ${Screens.sm}px;
     }
-    @media (min-width: 768px) {
-      max-width: 768px;
+    @media (min-width: ${Screens.md}px) {
+      max-width: ${Screens.md}px;
     }
-    @media (min-width: 1024px) {
-      max-width: 1024px;
+    @media (min-width: ${Screens.lg}px) {
+      max-width: ${Screens.lg}px;
     }
-    @media (min-width: 1280px) {
-      max-width: 1280px;
+    @media (min-width: ${Screens.xl}px) {
+      max-width: ${Screens.xl}px;
     }
-    @media (min-width: 1536px) {
-      max-width: 1536px;
+    @media (min-width: ${Screens["2xl"]}px) {
+      max-width: ${Screens["2xl"]}px;
     }
   }
 `;

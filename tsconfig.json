@@ -17,7 +17,7 @@
     "jsxImportSource": "@emotion/react",
     "baseUrl": ".",
     "paths": {
-      "@app/styles": ["./src/styles/globals.ts"],
+      "@app/styles/*": ["./src/styles/*"],
       "@lib/atoms": ["./src/components/atoms"],
       "@lib/molecules": ["./src/components/molecules"],
       "@lib/organisms": ["./src/components/organisms"],
