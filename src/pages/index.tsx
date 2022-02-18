@@ -17,7 +17,7 @@ const Home: NextPage = () => {
         className="container"
         css={css`
           display: flex;
-          justify-content: center;
+          flex-direction: column;
         `}
       >
         <Header />
