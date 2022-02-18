@@ -11,7 +11,13 @@ const Header: FC = () => {
       `}
     >
       <div>Navigation</div>
-      <div>Logo</div>
+      <h1
+        css={css`
+          font-size: 2rem;
+        `}
+      >
+        Logo
+      </h1>
       <div>Links</div>
     </div>
   );
