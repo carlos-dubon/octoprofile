@@ -1,3 +1,4 @@
 import { TranslucentNavLink } from "./TranslucentNavLink";
+import { HeroBgCircles } from "./HeroBgCircles";
 
-export { TranslucentNavLink };
+export { TranslucentNavLink, HeroBgCircles };

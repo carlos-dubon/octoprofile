@@ -14,7 +14,6 @@ const Header: FC = () => {
         height: 4.5em;
         font-size: 0.875em;
         font-weight: 500;
-        background-color: #c698fa;
       `}
     >
       <div
@@ -48,10 +47,43 @@ const Header: FC = () => {
         `}
       >
         <TranslucentNavLink href="https://github.com/carlos-dubon/octoprofile">
-          Star
+          <div
+            css={css`
+              display: grid;
+              align-items: center;
+              width: 2em;
+            `}
+          >
+            <Image
+              src="/icons/star.svg"
+              alt="star"
+              width={18}
+              height={18}
+              priority
+            />
+          </div>
         </TranslucentNavLink>
-        <TranslucentNavLink href="https://github.com/carlos-dubon/octoprofile">
-          Continue with GitHub
+        <TranslucentNavLink
+          onClick={() => {
+            console.log("Log in");
+          }}
+        >
+          <div
+            css={css`
+              display: flex;
+              gap: 0.5em;
+              padding: 0 0.75em;
+            `}
+          >
+            <Image
+              src="/icons/github.svg"
+              alt="github"
+              width={18}
+              height={18}
+              priority
+            />
+            <div>Continue with GitHub</div>
+          </div>
         </TranslucentNavLink>
       </div>
     </div>

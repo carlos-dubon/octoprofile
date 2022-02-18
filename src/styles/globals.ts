@@ -8,6 +8,7 @@ const globalStyles: SerializedStyles = css`
     padding: 0;
     margin: 0;
     font-family: "Inter", sans-serif;
+    overflow-x: hidden;
   }
 
   a {
