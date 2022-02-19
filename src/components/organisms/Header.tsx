@@ -7,24 +7,29 @@ import Colors from "@app/styles/colors";
 import Tippy from "@tippyjs/react";
 
 const Header: FC = () => {
+  const containerStyles = css`
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 4.5em;
+    font-size: 0.875em;
+    font-weight: 500;
+  `;
+
+  const leftNavStyles = css`
+    display: flex;
+    gap: 2.5em;
+    color: ${Colors.gray900};
+  `;
+
+  const rightNavStyles = css`
+    display: flex;
+    gap: 1em;
+  `;
+
   return (
-    <div
-      css={css`
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        height: 4.5em;
-        font-size: 0.875em;
-        font-weight: 500;
-      `}
-    >
-      <div
-        css={css`
-          display: flex;
-          gap: 2.5em;
-          color: ${Colors.gray900};
-        `}
-      >
+    <div css={containerStyles}>
+      <div css={leftNavStyles}>
         <Link href="https://github.com/carlos-dubon/octoprofile">
           <a>Contribute</a>
         </Link>
@@ -43,29 +48,28 @@ const Header: FC = () => {
           />
         </a>
       </Link>
-      <div
-        css={css`
-          display: flex;
-          gap: 1em;
-        `}
-      >
-        <TranslucentNavLink href="https://github.com/carlos-dubon/octoprofile">
-          <div
-            css={css`
-              display: grid;
-              align-items: center;
-              width: 2em;
-            `}
-          >
-            <Image
-              src="/icons/star.svg"
-              alt="star"
-              width={18}
-              height={18}
-              priority
-            />
+      <div css={rightNavStyles}>
+        <Tippy content="Star this project" delay={200} offset={[0, 12]}>
+          <div>
+            <TranslucentNavLink href="https://github.com/carlos-dubon/octoprofile">
+              <div
+                css={css`
+                  display: grid;
+                  align-items: center;
+                  width: 2em;
+                `}
+              >
+                <Image
+                  src="/icons/star.svg"
+                  alt="star"
+                  width={18}
+                  height={18}
+                  priority
+                />
+              </div>
+            </TranslucentNavLink>
           </div>
-        </TranslucentNavLink>
+        </Tippy>
         <Tippy content="Sign in with GitHub" delay={200} offset={[0, 12]}>
           <div>
             <TranslucentNavLink

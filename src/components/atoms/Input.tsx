@@ -34,29 +34,64 @@ const Input: FC<Props> = ({
   const height = "4em";
   const padding = "1.375em";
 
+  const containerStyles = css`
+    display: flex;
+    align-items: center;
+    background: #ffffff;
+    box-shadow: 0px 10px 20px rgba(41, 41, 42, 0.07);
+    border-radius: 5px;
+    height: ${height};
+    width: fit-content;
+  `;
+
+  const magnifyingGlassStyles = css`
+    display: grid;
+    align-items: center;
+    height: 100%;
+    cursor: text;
+    padding-left: ${padding};
+  `;
+
+  const inputStyles = css`
+    height: ${height};
+    outline: none;
+    border: 0;
+    font-size: 1em;
+    font-weight: 400;
+    padding-left: ${padding};
+    font-family: "Inter", sans-serif;
+    ::placeholder {
+      color: ${Colors.gray700};
+    }
+  `;
+
+  const clearBtnContainerStyles = css`
+    height: ${height};
+    display: grid;
+    align-items: center;
+    padding-right: ${padding};
+    cursor: text;
+  `;
+
+  const clearBtnStyles = css`
+    cursor: pointer;
+    opacity: ${inputRef.current?.value.length ? "1" : "0"};
+    pointer-events: ${inputRef.current?.value.length ? "all" : "none"};
+  `;
+
+  const childrenStyles = css`
+    height: 4em;
+    padding-right: ${padding};
+    cursor: ${children ? "default" : "text"};
+  `;
+
   return (
-    <div
-      css={css`
-        display: flex;
-        align-items: center;
-        background: #ffffff;
-        box-shadow: 0px 10px 20px rgba(41, 41, 42, 0.07);
-        border-radius: 5px;
-        height: ${height};
-        width: fit-content;
-      `}
-    >
+    <div css={containerStyles}>
       <div
         onClick={() => {
           inputRef.current?.focus();
         }}
-        css={css`
-          display: grid;
-          align-items: center;
-          height: 100%;
-          cursor: text;
-          padding-left: ${padding};
-        `}
+        css={magnifyingGlassStyles}
       >
         <Image
           src="/icons/search.svg"
@@ -68,18 +103,7 @@ const Input: FC<Props> = ({
       </div>
       <input
         ref={inputRef}
-        css={css`
-          height: ${height};
-          outline: none;
-          border: 0;
-          font-size: 1em;
-          font-weight: 400;
-          padding-left: ${padding};
-          font-family: "Inter", sans-serif;
-          ::placeholder {
-            color: ${Colors.gray700};
-          }
-        `}
+        css={inputStyles}
         type={type || "text"}
         name={name}
         onChange={onChange}
@@ -87,13 +111,7 @@ const Input: FC<Props> = ({
         placeholder={placeholder}
       />
       <div
-        css={css`
-          height: ${height};
-          display: grid;
-          align-items: center;
-          padding-right: ${padding};
-          cursor: text;
-        `}
+        css={clearBtnContainerStyles}
         onClick={() => {
           inputRef.current?.focus();
         }}
@@ -106,13 +124,7 @@ const Input: FC<Props> = ({
         >
           <div>
             <Image
-              css={css`
-                cursor: pointer;
-                opacity: ${inputRef.current?.value.length ? "1" : "0"};
-                pointer-events: ${inputRef.current?.value.length
-                  ? "all"
-                  : "none"};
-              `}
+              css={clearBtnStyles}
               onClick={() => {
                 clearFn && clearFn();
                 if (inputRef.current) inputRef.current.value = "";
@@ -127,11 +139,7 @@ const Input: FC<Props> = ({
         </Tippy>
       </div>
       <div
-        css={css`
-          height: 4em;
-          padding-right: ${padding};
-          cursor: ${children ? "default" : "text"};
-        `}
+        css={childrenStyles}
         onClick={() => {
           !children && inputRef.current?.focus();
         }}
