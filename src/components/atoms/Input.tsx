@@ -1,15 +1,33 @@
-import { FC, HTMLInputTypeAttribute, ReactNode, useRef } from "react";
+import {
+  ChangeEventHandler,
+  FC,
+  HTMLInputTypeAttribute,
+  ReactNode,
+  useRef,
+} from "react";
 import { css } from "@emotion/react";
 import Colors from "@app/styles/colors";
 import Image from "next/image";
 
 interface Props {
   type?: HTMLInputTypeAttribute;
+  onChange?: ChangeEventHandler<HTMLInputElement>;
+  value?: string;
+  name?: string;
   placeholder?: string;
   children?: ReactNode;
+  clearFn?: Function;
 }
 
-const Input: FC<Props> = ({ type, placeholder, children }) => {
+const Input: FC<Props> = ({
+  type,
+  placeholder,
+  children,
+  onChange,
+  value,
+  name,
+  clearFn,
+}) => {
   const inputRef = useRef<HTMLInputElement | null>(null);
 
   const height = "4em";
@@ -55,15 +73,47 @@ const Input: FC<Props> = ({ type, placeholder, children }) => {
           border: 0;
           font-size: 1em;
           font-weight: 400;
-          padding: 0 ${padding};
+          padding-left: ${padding};
           font-family: "Inter", sans-serif;
           ::placeholder {
             color: ${Colors.gray700};
           }
         `}
         type={type || "text"}
+        name={name}
+        onChange={onChange}
+        value={value}
         placeholder={placeholder}
       />
+      <div
+        css={css`
+          height: ${height};
+          display: grid;
+          align-items: center;
+          padding-right: ${padding};
+          cursor: text;
+        `}
+        onClick={() => {
+          inputRef.current?.focus();
+        }}
+      >
+        <Image
+          css={css`
+            cursor: pointer;
+            opacity: ${inputRef.current?.value.length ? "1" : "0"};
+            pointer-events: ${inputRef.current?.value.length ? "all" : "none"};
+          `}
+          onClick={() => {
+            clearFn && clearFn();
+            if (inputRef.current) inputRef.current.value = "";
+          }}
+          src="/icons/dismiss.svg"
+          alt="delete"
+          width={20}
+          height={20}
+          priority
+        />
+      </div>
       <div
         css={css`
           height: 4em;
