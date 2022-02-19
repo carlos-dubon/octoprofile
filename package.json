@@ -15,6 +15,7 @@
   },
   "dependencies": {
     "@emotion/react": "^11.7.1",
+    "@tippyjs/react": "^4.2.6",
     "formik": "^2.2.9",
     "next": "12.0.10",
     "react": "17.0.2",

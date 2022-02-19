@@ -8,6 +8,7 @@ import {
 import { css } from "@emotion/react";
 import Colors from "@app/styles/colors";
 import Image from "next/image";
+import Tippy from "@tippyjs/react";
 
 interface Props {
   type?: HTMLInputTypeAttribute;
@@ -97,22 +98,33 @@ const Input: FC<Props> = ({
           inputRef.current?.focus();
         }}
       >
-        <Image
-          css={css`
-            cursor: pointer;
-            opacity: ${inputRef.current?.value.length ? "1" : "0"};
-            pointer-events: ${inputRef.current?.value.length ? "all" : "none"};
-          `}
-          onClick={() => {
-            clearFn && clearFn();
-            if (inputRef.current) inputRef.current.value = "";
-          }}
-          src="/icons/dismiss.svg"
-          alt="delete"
-          width={20}
-          height={20}
-          priority
-        />
+        <Tippy
+          content="Clear"
+          disabled={inputRef.current?.value.length ? false : true}
+          delay={200}
+          offset={[0, 12]}
+        >
+          <div>
+            <Image
+              css={css`
+                cursor: pointer;
+                opacity: ${inputRef.current?.value.length ? "1" : "0"};
+                pointer-events: ${inputRef.current?.value.length
+                  ? "all"
+                  : "none"};
+              `}
+              onClick={() => {
+                clearFn && clearFn();
+                if (inputRef.current) inputRef.current.value = "";
+              }}
+              src="/icons/dismiss.svg"
+              alt="delete"
+              width={20}
+              height={20}
+              priority
+            />
+          </div>
+        </Tippy>
       </div>
       <div
         css={css`

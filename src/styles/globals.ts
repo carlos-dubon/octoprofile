@@ -1,18 +1,18 @@
 import { css, SerializedStyles } from "@emotion/react";
 import Screens from "@app/styles/breakpoints";
 
-const textSelectionColor = "rgb(198,152,250,0.4)";
-
 const globalStyles: SerializedStyles = css`
   @import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap");
 
   /* Text Selection Color */
   ::selection {
-    background: ${textSelectionColor};
+    background: rgba(198, 152, 250, 0.4);
   }
-  /* Code for Firefox */
-  ::-moz-selection {
-    background: ${textSelectionColor};
+
+  input {
+    ::selection {
+      background: rgba(255, 194, 120, 0.4);
+    }
   }
 
   html,
