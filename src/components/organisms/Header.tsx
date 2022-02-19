@@ -4,6 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { TranslucentNavLink } from "../atoms/TranslucentNavLink";
 import Colors from "@app/styles/colors";
+import Tippy from "@tippyjs/react";
 
 const Header: FC = () => {
   return (
@@ -65,28 +66,32 @@ const Header: FC = () => {
             />
           </div>
         </TranslucentNavLink>
-        <TranslucentNavLink
-          onClick={() => {
-            console.log("Log in");
-          }}
-        >
-          <div
-            css={css`
-              display: flex;
-              gap: 0.5em;
-              padding: 0 0.75em;
-            `}
-          >
-            <Image
-              src="/icons/github.svg"
-              alt="github"
-              width={18}
-              height={18}
-              priority
-            />
-            <div>Continue with GitHub</div>
+        <Tippy content="Sign in with GitHub" delay={200} offset={[0, 12]}>
+          <div>
+            <TranslucentNavLink
+              onClick={() => {
+                console.log("Log in");
+              }}
+            >
+              <div
+                css={css`
+                  display: flex;
+                  gap: 0.5em;
+                  padding: 0 0.75em;
+                `}
+              >
+                <Image
+                  src="/icons/github.svg"
+                  alt="github"
+                  width={18}
+                  height={18}
+                  priority
+                />
+                <div>Continue with GitHub</div>
+              </div>
+            </TranslucentNavLink>
           </div>
-        </TranslucentNavLink>
+        </Tippy>
       </div>
     </div>
   );
