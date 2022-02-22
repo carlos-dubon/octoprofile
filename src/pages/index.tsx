@@ -22,7 +22,7 @@ const Home: NextPage = () => {
       >
         <Header />
         <Hero />
-        <p>Hello</p>
+        <div style={{ height: "2500px" }}></div>
       </div>
       <HeroBgCircles />
     </div>

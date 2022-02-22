@@ -1,6 +1,7 @@
 import {
   ChangeEventHandler,
   FC,
+  FocusEventHandler,
   HTMLInputTypeAttribute,
   ReactNode,
   useRef,
@@ -13,6 +14,7 @@ import Tippy from "@tippyjs/react";
 interface Props {
   type?: HTMLInputTypeAttribute;
   onChange?: ChangeEventHandler<HTMLInputElement>;
+  onBlur?: FocusEventHandler<HTMLInputElement>;
   value?: string;
   name?: string;
   placeholder?: string;
@@ -25,6 +27,7 @@ const Input: FC<Props> = ({
   placeholder,
   children,
   onChange,
+  onBlur,
   value,
   name,
   clearFn,
@@ -69,6 +72,7 @@ const Input: FC<Props> = ({
     height: ${height};
     display: grid;
     align-items: center;
+    padding-left: calc(${padding} / 2);
     padding-right: ${padding};
     cursor: text;
   `;
@@ -106,6 +110,7 @@ const Input: FC<Props> = ({
         css={inputStyles}
         type={type || "text"}
         name={name}
+        onBlur={onBlur}
         onChange={onChange}
         value={value}
         placeholder={placeholder}

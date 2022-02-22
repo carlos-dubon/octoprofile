@@ -25,9 +25,26 @@ const Hero: FC = () => {
     initialValues: {
       username: "",
     },
+    validate: (values) => {
+      const errors: any = {};
+
+      if (!values.username) {
+        errors.username = "Este campo es obligatorio.";
+      }
+
+      if (
+        values.username &&
+        !/^[a-z\d](?:[a-z\d]|-(?=[a-z\d])){0,38}$/i.test(values.username)
+      ) {
+        errors.username = "Nombre de usuario inválido";
+      }
+
+      return errors;
+    },
     onSubmit: (values) => {
       console.log(values.username);
     },
+    validateOnMount: true,
   });
 
   return (
@@ -38,14 +55,46 @@ const Hero: FC = () => {
         visualizations of your languages and stars.
       </p>
 
-      <form onSubmit={usernameInput.handleSubmit}>
+      <form
+        onSubmit={usernameInput.handleSubmit}
+        css={css`
+          width: fit-content;
+        `}
+      >
         <Input
           name="username"
           onChange={usernameInput.handleChange}
           value={usernameInput.values.username}
           clearFn={usernameInput.resetForm}
+          onBlur={usernameInput.handleBlur}
           placeholder="Your GitHub username"
         />
+        <div
+          css={css`
+            font-size: 0.875em;
+            width: fit-content;
+            padding-top: 1em;
+            cursor: help;
+            color: ${Colors.pink900};
+            animation: ${usernameInput.touched.username &&
+            usernameInput.errors.username
+              ? "enter 0.2s ease-in-out forwards"
+              : ""};
+
+            @keyframes enter {
+              from {
+                opacity: 0;
+                transform: translateY(-8px);
+              }
+              to {
+                opacity: 1;
+                transform: translateY(0);
+              }
+            }
+          `}
+        >
+          {usernameInput.touched.username ? usernameInput.errors.username : ""}
+        </div>
       </form>
     </>
   );
