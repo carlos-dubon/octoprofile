@@ -1,7 +1,7 @@
 import { FC } from "react";
 import { css } from "@emotion/react";
 import Colors from "@app/styles/colors";
-import { Input } from "@lib/atoms";
+import { Input, ErrorMsg } from "@lib/atoms";
 import { useFormik } from "formik";
 
 const Hero: FC = () => {
@@ -47,28 +47,6 @@ const Hero: FC = () => {
     color: ${Colors.gray900};
   `;
 
-  const errorMsgStyles = css`
-    font-size: 0.875em;
-    width: fit-content;
-    height: 18px;
-    padding-top: 1em;
-    color: ${Colors.pink900};
-    animation: ${usernameInput.touched.username && usernameInput.errors.username
-      ? "enter 0.2s ease-in-out forwards"
-      : ""};
-
-    @keyframes enter {
-      from {
-        opacity: 0;
-        transform: translateY(-8px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-  `;
-
   return (
     <>
       <div
@@ -99,11 +77,10 @@ const Hero: FC = () => {
             onBlur={usernameInput.handleBlur}
             placeholder="Your GitHub username"
           />
-          <div css={errorMsgStyles}>
-            {usernameInput.touched.username
-              ? usernameInput.errors.username
-              : ""}
-          </div>
+          <ErrorMsg
+            touched={usernameInput.touched.username}
+            errorMessage={usernameInput.errors.username}
+          />
         </form>
       </div>
     </>
