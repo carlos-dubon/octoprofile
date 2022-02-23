@@ -11,7 +11,7 @@ const ErrorMsg: FC<Props> = ({ touched, errorMessage }) => {
   const errorMsgStyles = css`
     font-size: 0.875em;
     width: fit-content;
-    height: 18px;
+    height: 31px;
     padding-top: 1em;
     color: ${Colors.pink900};
     animation: ${touched && errorMessage
