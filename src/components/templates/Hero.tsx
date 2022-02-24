@@ -3,8 +3,11 @@ import { css } from "@emotion/react";
 import Colors from "@app/styles/colors";
 import { Input, ErrorMsg } from "@lib/atoms";
 import { useFormik } from "formik";
+import { NextRouter, useRouter } from "next/router";
 
 const Hero: FC = () => {
+  const router: NextRouter = useRouter();
+
   const usernameInput = useFormik({
     initialValues: {
       username: "",
@@ -26,7 +29,7 @@ const Hero: FC = () => {
       return errors;
     },
     onSubmit: (values) => {
-      console.log(values.username);
+      router.push(`/${values.username}`);
     },
     validateOnMount: true,
   });
