@@ -4,6 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { TranslucentNavLink } from "../atoms/TranslucentNavLink";
 import Colors from "@app/styles/colors";
+import Screens from "@app/styles/breakpoints";
 import Tippy from "@tippyjs/react";
 
 const Header: FC = () => {
@@ -17,9 +18,13 @@ const Header: FC = () => {
   `;
 
   const leftNavStyles = css`
-    display: flex;
+    display: none;
     gap: 2.5em;
     color: ${Colors.gray900};
+
+    @media (min-width: ${Screens.lg}px) {
+      display: flex;
+    }
   `;
 
   const rightNavStyles = css`
