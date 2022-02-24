@@ -18,7 +18,7 @@ const HeroBgCircles: FC = () => {
           position: absolute;
           top: 0;
           right: 0;
-          transform: translateX(100px) translateY(-100px);
+          transform: translateX(150px) translateY(-150px);
           @media (min-width: ${Screens.sm}px) {
             transform: translateX(295px) translateY(-295px);
           }

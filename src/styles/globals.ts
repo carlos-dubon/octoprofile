@@ -59,6 +59,20 @@ const globalStyles: SerializedStyles = css`
       max-width: ${Screens["2xl"]}px;
     }
   }
+
+  .hide-desktop {
+    display: inherit;
+    @media (min-width: ${Screens.sm}px) {
+      display: none;
+    }
+  }
+
+  .hide-mobile {
+    display: none;
+    @media (min-width: ${Screens.sm}px) {
+      display: inherit;
+    }
+  }
 `;
 
 export default globalStyles;

@@ -96,7 +96,8 @@ const Header: FC = () => {
                   height={18}
                   priority
                 />
-                <div>Continue with GitHub</div>
+                <div className="hide-desktop">Sign In</div>
+                <div className="hide-mobile">Continue with GitHub</div>
               </div>
             </TranslucentNavLink>
           </div>
