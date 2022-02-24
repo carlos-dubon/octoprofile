@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { css } from "@emotion/react";
 import { FC } from "react";
+import Screens from "@app/styles/breakpoints";
 
 const HeroBgCircles: FC = () => {
   return (
@@ -17,7 +18,10 @@ const HeroBgCircles: FC = () => {
           position: absolute;
           top: 0;
           right: 0;
-          transform: translateX(295px) translateY(-295px);
+          transform: translateX(100px) translateY(-100px);
+          @media (min-width: ${Screens.sm}px) {
+            transform: translateX(295px) translateY(-295px);
+          }
         `}
       >
         <Image
