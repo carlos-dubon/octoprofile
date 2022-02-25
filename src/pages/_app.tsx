@@ -4,6 +4,7 @@ import "baby-i-am-faded/styles.css";
 import { Global, css } from "@emotion/react";
 import "tippy.js/dist/tippy.css";
 import "tippy.js/animations/shift-away.css";
+import { Toaster } from "react-hot-toast";
 
 const MyApp = ({ Component, pageProps }: AppProps) => {
   return (
@@ -15,6 +16,7 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
       />
 
       <Component {...pageProps} />
+      <Toaster position="bottom-center" />
     </>
   );
 };

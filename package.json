@@ -16,11 +16,15 @@
   "dependencies": {
     "@emotion/react": "^11.7.1",
     "@tippyjs/react": "^4.2.6",
+    "axios": "^0.26.0",
     "baby-i-am-faded": "^4.0.10",
+    "firebase": "^9.6.7",
     "formik": "^2.2.9",
     "next": "12.0.10",
     "react": "17.0.2",
-    "react-dom": "17.0.2"
+    "react-dom": "17.0.2",
+    "react-firebase-hooks": "^5.0.3",
+    "react-hot-toast": "^2.2.0"
   },
   "devDependencies": {
     "@types/node": "17.0.16",
