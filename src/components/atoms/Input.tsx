@@ -63,6 +63,7 @@ const Input: FC<Props> = ({
     font-size: 1em;
     font-weight: 400;
     padding-left: ${padding};
+    width: 100%;
     font-family: "Inter", sans-serif;
     ::placeholder {
       color: ${Colors.gray700};
