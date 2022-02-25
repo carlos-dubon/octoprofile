@@ -129,11 +129,26 @@ const Hero: FC = () => {
           </form>
         </div>
         <div css={imageAreaStyles}>
-          <Faded whenInView animationName="babyFadeInRight" triggerOnce>
+          <Faded
+            whenInView
+            animationName="babyFadeInRight"
+            triggerOnce
+            css={css`
+              @media (min-width: ${Screens.sm}px) {
+                display: flex;
+                justify-content: center;
+                width: 100%;
+              }
+            `}
+          >
             <div
               css={css`
                 filter: drop-shadow(48px 24px 48px rgba(24, 37, 56, 0.12));
+                @media (min-width: ${Screens.sm}px) {
+                  width: 80%;
+                }
                 @media (min-width: ${Screens.lg}px) {
+                  width: 100%;
                   transform: translateY(-4em);
                 }
               `}
