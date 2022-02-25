@@ -51,6 +51,7 @@ const Input: FC<Props> = ({
     display: grid;
     align-items: center;
     height: 100%;
+    min-width: fit-content;
     cursor: text;
     padding-left: ${padding};
   `;
@@ -70,6 +71,7 @@ const Input: FC<Props> = ({
 
   const clearBtnContainerStyles = css`
     height: ${height};
+    min-width: fit-content;
     display: grid;
     align-items: center;
     padding-left: calc(${padding} / 2);
