@@ -73,6 +73,16 @@ const globalStyles: SerializedStyles = css`
       display: inherit;
     }
   }
+
+  @keyframes babyFadeInRight {
+    from {
+      opacity: 0;
+      transform: translate3d(3em, 0px, 0px);
+    }
+    to {
+      transform: none;
+    }
+  }
 `;
 
 export default globalStyles;

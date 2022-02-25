@@ -6,6 +6,7 @@ import { useFormik } from "formik";
 import { NextRouter, useRouter } from "next/router";
 import Image from "next/image";
 import appPreview from "public/preview.png";
+import { Faded } from "baby-i-am-faded";
 
 const Hero: FC = () => {
   const router: NextRouter = useRouter();
@@ -101,22 +102,24 @@ const Hero: FC = () => {
             align-items: center;
           `}
         >
-          <div
-            css={css`
-              filter: drop-shadow(48px 24px 48px rgba(24, 37, 56, 0.12));
-              transform: translateY(-4em);
-            `}
-          >
-            <Image
-              unoptimized
-              src={appPreview}
-              placeholder="blur"
-              alt="App Preview"
-              width={518.61}
-              height={387.18}
-              priority
-            />
-          </div>
+          <Faded whenInView animationName="babyFadeInRight" triggerOnce>
+            <div
+              css={css`
+                filter: drop-shadow(48px 24px 48px rgba(24, 37, 56, 0.12));
+                transform: translateY(-4em);
+              `}
+            >
+              <Image
+                unoptimized
+                src={appPreview}
+                placeholder="blur"
+                alt="App Preview"
+                width={518.61}
+                height={387.18}
+                priority
+              />
+            </div>
+          </Faded>
         </div>
       </div>
     </>
