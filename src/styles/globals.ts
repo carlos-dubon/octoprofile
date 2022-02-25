@@ -21,6 +21,7 @@ const globalStyles: SerializedStyles = css`
     margin: 0;
     font-family: "Inter", sans-serif;
     overflow-x: hidden;
+    position: relative;
   }
 
   a {
