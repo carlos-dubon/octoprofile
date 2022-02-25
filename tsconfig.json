@@ -21,7 +21,8 @@
       "@lib/atoms": ["./src/components/atoms"],
       "@lib/molecules": ["./src/components/molecules"],
       "@lib/organisms": ["./src/components/organisms"],
-      "@lib/templates": ["./src/components/templates"]
+      "@lib/templates": ["./src/components/templates"],
+      "@app/firebase": ["./src/firebase"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],

@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, useEffect } from "react";
 import { css } from "@emotion/react";
 import Link from "next/link";
 import Image from "next/image";
@@ -6,8 +6,14 @@ import { TranslucentNavLink } from "../atoms/TranslucentNavLink";
 import Colors from "@app/styles/colors";
 import Screens from "@app/styles/breakpoints";
 import Tippy from "@tippyjs/react";
+import { useSignInWithGithub } from "react-firebase-hooks/auth";
+import { auth } from "@app/firebase";
+import toast from "react-hot-toast";
+import axios from "axios";
 
 const Header: FC = () => {
+  const [signInWithGitHub, user, loading, error] = useSignInWithGithub(auth);
+
   const containerStyles = css`
     display: flex;
     justify-content: space-between;
@@ -31,6 +37,40 @@ const Header: FC = () => {
     display: flex;
     gap: 1em;
   `;
+
+  useEffect(() => {
+    if (loading) {
+      toast.loading("Loading");
+    }
+  }, [loading]);
+
+  useEffect(() => {
+    if (error) {
+      toast.dismiss();
+      toast.error("Oops! Something went wrong");
+    }
+  }, [error]);
+
+  useEffect(() => {
+    if (!user || loading) {
+      return;
+    }
+
+    const getUserId = async () => {
+      const gitHubUid: string = user.user.providerData[0].uid;
+
+      const gitHubUser = await axios.get(
+        `https://api.github.com/user/${gitHubUid}`
+      );
+
+      // success
+      console.log(gitHubUser);
+
+      toast.dismiss();
+    };
+
+    getUserId();
+  }, [user, loading]);
 
   return (
     <div css={containerStyles}>
@@ -79,7 +119,7 @@ const Header: FC = () => {
           <div>
             <TranslucentNavLink
               onClick={() => {
-                console.log("Log in");
+                signInWithGitHub();
               }}
             >
               <div
