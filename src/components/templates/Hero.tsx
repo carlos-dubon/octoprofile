@@ -46,6 +46,7 @@ const Hero: FC = () => {
       "text";
     margin-top: 3.75em;
     @media (min-width: ${Screens.lg}px) {
+      margin-top: 0px;
       min-height: 865px;
       grid-template-areas: "text image";
     }
@@ -56,7 +57,15 @@ const Hero: FC = () => {
     flex-direction: column;
     justify-content: center;
     grid-area: text;
-    max-width: 540px;
+    @media (min-width: ${Screens.md}px) {
+      max-width: 80%;
+    }
+    @media (min-width: ${Screens.lg}px) {
+      max-width: 420px;
+    }
+    @media (min-width: ${Screens.xl}px) {
+      max-width: 540px;
+    }
   `;
 
   const imageAreaStyles = css`
@@ -72,6 +81,9 @@ const Hero: FC = () => {
     color: ${Colors.gray900};
     margin: 0;
     @media (min-width: ${Screens.sm}px) {
+      font-size: 4em;
+    }
+    @media (min-width: ${Screens.xl}px) {
       font-size: 4.5em;
     }
   `;
@@ -80,6 +92,7 @@ const Hero: FC = () => {
     font-size: 1em;
     margin: 1em 0;
     color: ${Colors.gray900};
+    line-height: 178%;
     @media (min-width: ${Screens.sm}px) {
       font-size: 1.125em;
     }
@@ -120,7 +133,9 @@ const Hero: FC = () => {
             <div
               css={css`
                 filter: drop-shadow(48px 24px 48px rgba(24, 37, 56, 0.12));
-                //transform: translateY(-4em);
+                @media (min-width: ${Screens.lg}px) {
+                  transform: translateY(-4em);
+                }
               `}
             >
               <Image
