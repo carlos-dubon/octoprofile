@@ -4,6 +4,8 @@ import Colors from "@app/styles/colors";
 import { Input, ErrorMsg } from "@lib/atoms";
 import { useFormik } from "formik";
 import { NextRouter, useRouter } from "next/router";
+import Image from "next/image";
+import appPreview from "public/preview.png";
 
 const Hero: FC = () => {
   const router: NextRouter = useRouter();
@@ -54,37 +56,68 @@ const Hero: FC = () => {
     <>
       <div
         css={css`
-          display: flex;
+          display: grid;
           min-height: 865px;
-          flex-direction: column;
-          justify-content: center;
+          gap: 2.75em;
+          grid-template-columns: repeat(2, 1fr);
         `}
       >
-        <h1 css={headingStyles}>Get your own OctoProfile</h1>
-        <p css={subheadingStyles}>
-          A nicer look at your GitHub profile and repositories. With data
-          visualizations of your languages and stars.
-        </p>
-
-        <form
-          onSubmit={usernameInput.handleSubmit}
+        <div
           css={css`
-            width: fit-content;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
           `}
         >
-          <Input
-            name="username"
-            onChange={usernameInput.handleChange}
-            value={usernameInput.values.username}
-            clearFn={usernameInput.resetForm}
-            onBlur={usernameInput.handleBlur}
-            placeholder="Your GitHub username"
-          />
-          <ErrorMsg
-            touched={usernameInput.touched.username}
-            errorMessage={usernameInput.errors.username}
-          />
-        </form>
+          <h1 css={headingStyles}>Get your own OctoProfile</h1>
+          <p css={subheadingStyles}>
+            A nicer look at your GitHub profile and repositories. With data
+            visualizations of your languages and stars.
+          </p>
+
+          <form
+            onSubmit={usernameInput.handleSubmit}
+            css={css`
+              width: fit-content;
+            `}
+          >
+            <Input
+              name="username"
+              onChange={usernameInput.handleChange}
+              value={usernameInput.values.username}
+              clearFn={usernameInput.resetForm}
+              onBlur={usernameInput.handleBlur}
+              placeholder="Your GitHub username"
+            />
+            <ErrorMsg
+              touched={usernameInput.touched.username}
+              errorMessage={usernameInput.errors.username}
+            />
+          </form>
+        </div>
+        <div
+          css={css`
+            display: flex;
+            align-items: center;
+          `}
+        >
+          <div
+            css={css`
+              filter: drop-shadow(48px 24px 48px rgba(24, 37, 56, 0.12));
+              transform: translateY(-4em);
+            `}
+          >
+            <Image
+              unoptimized
+              src={appPreview}
+              placeholder="blur"
+              alt="App Preview"
+              width={518.61}
+              height={387.18}
+              priority
+            />
+          </div>
+        </div>
       </div>
     </>
   );
