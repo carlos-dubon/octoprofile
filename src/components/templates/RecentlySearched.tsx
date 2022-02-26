@@ -1,13 +1,12 @@
 import { FC } from "react";
-import { SectionTitle } from "../molecules/SectionTitle";
 import { css } from "@emotion/react";
 import Colors from "@app/styles/colors";
 import Screens from "@app/styles/breakpoints";
-import { UserCard } from "../molecules/UserCard";
+import { UserCard, SectionTitle } from "@lib/molecules";
 import bands from "public/bands.svg";
-import externalLink from "public/externalLink.svg";
+import externalLink from "public/icons/externalLink.svg";
 import Image from "next/image";
-import { Button } from "../atoms/Button";
+import { Button } from "@lib/atoms";
 
 const RecentlySearched: FC = () => {
   // Get the last 7 profiles
@@ -89,10 +88,10 @@ const RecentlySearched: FC = () => {
         grid-column: 2;
         transform: translateX(0);
       }
-      .card:nth-child(1),
-      .card:nth-child(3),
-      .card:nth-child(4),
-      .card:nth-child(6) {
+      .card:nth-of-type(1),
+      .card:nth-of-type(3),
+      .card:nth-of-type(4),
+      .card:nth-of-type(6) {
         transform: translateY(50%);
       }
     }
