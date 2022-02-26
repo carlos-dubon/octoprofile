@@ -39,7 +39,9 @@ const Button: FC<Props> = ({ children, bgColor, onClick, href, external }) => {
           </a>
         </Link>
       ) : (
-        <button css={buttonStyles}>{children}</button>
+        <button css={buttonStyles} onClick={onClick}>
+          {children}
+        </button>
       )}
     </>
   );
