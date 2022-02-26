@@ -1,3 +1,4 @@
 import { Hero } from "./Hero";
+import { RecentlySearched } from "./RecentlySearched";
 
-export { Hero };
+export { Hero, RecentlySearched };

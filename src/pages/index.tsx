@@ -2,7 +2,7 @@ import type { NextPage } from "next";
 import Head from "next/head";
 import { css } from "@emotion/react";
 import { Header } from "@lib/organisms";
-import { Hero } from "@lib/templates";
+import { Hero, RecentlySearched } from "@lib/templates";
 import { HeroBgCircles } from "@lib/atoms";
 
 const Home: NextPage = () => {
@@ -22,6 +22,7 @@ const Home: NextPage = () => {
       >
         <Header />
         <Hero />
+        <RecentlySearched />
         <div style={{ height: "2500px" }}></div>
       </div>
       <HeroBgCircles />
