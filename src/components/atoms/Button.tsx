@@ -8,9 +8,10 @@ interface Props {
   children?: ReactNode;
   onClick?: MouseEventHandler<HTMLButtonElement>;
   href?: string;
+  external?: boolean;
 }
 
-const Button: FC<Props> = ({ children, bgColor, onClick, href }) => {
+const Button: FC<Props> = ({ children, bgColor, onClick, href, external }) => {
   const buttonStyles = css`
     background-color: ${bgColor ? bgColor : Colors.purple900};
     color: #ffffff;
@@ -33,7 +34,9 @@ const Button: FC<Props> = ({ children, bgColor, onClick, href }) => {
     <>
       {href ? (
         <Link href={href} passHref>
-          <a css={buttonStyles}>{children}</a>
+          <a target={external ? "_blank" : ""} css={buttonStyles}>
+            {children}
+          </a>
         </Link>
       ) : (
         <button css={buttonStyles}>{children}</button>
