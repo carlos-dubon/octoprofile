@@ -5,6 +5,7 @@ const Colors = {
   gray300: "#D9DBE1",
   gray200: "#EEEFF4",
   gray100: "#F4F5F7",
+  grayHover: "#F3F4F6",
   purple900: "#8C30F5",
   purple800: "#D6B1FF",
   purple100: "#F1E4FF",
