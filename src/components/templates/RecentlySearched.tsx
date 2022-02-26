@@ -104,7 +104,7 @@ const RecentlySearched: FC = () => {
               <UserCard
                 displayName={profile.displayName}
                 picture={profile.profilePicture}
-                url={profile.url}
+                url={`/${profile.username}`}
                 username={profile.username}
               />
             </div>
