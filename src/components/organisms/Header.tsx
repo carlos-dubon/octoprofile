@@ -2,7 +2,7 @@ import { FC, useEffect } from "react";
 import { css } from "@emotion/react";
 import Link from "next/link";
 import Image from "next/image";
-import { TranslucentNavLink } from "../atoms/TranslucentNavLink";
+import { TranslucentNavLink } from "@lib/atoms";
 import Colors from "@app/styles/colors";
 import Screens from "@app/styles/breakpoints";
 import Tippy from "@tippyjs/react";
