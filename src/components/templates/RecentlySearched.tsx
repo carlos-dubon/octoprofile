@@ -103,7 +103,10 @@ const RecentlySearched: FC = () => {
     z-index: -1;
     width: 1832px;
     height: 387px;
-    transform: translateY(70%);
+    transform: translateX(-30%) translateY(100%);
+    @media (min-width: ${Screens.sm}px) {
+      transform: translateY(70%);
+    }
   `;
 
   const buttonStyles = css`
