@@ -144,6 +144,7 @@ const RecentlySearched: FC = () => {
         bgColor={Colors.gray900}
         href={"https://github.com/carlos-dubon/octoprofile"}
         external
+        mobile
       >
         <div css={buttonStyles}>
           <p>Contribute</p>

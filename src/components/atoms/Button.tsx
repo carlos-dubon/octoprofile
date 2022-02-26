@@ -1,6 +1,7 @@
 import { FC, MouseEventHandler, ReactNode } from "react";
 import { css } from "@emotion/react";
 import Colors from "@app/styles/colors";
+import Screens from "@app/styles/breakpoints";
 import Link from "next/link";
 
 interface Props {
@@ -9,9 +10,17 @@ interface Props {
   onClick?: MouseEventHandler<HTMLButtonElement>;
   href?: string;
   external?: boolean;
+  mobile?: boolean;
 }
 
-const Button: FC<Props> = ({ children, bgColor, onClick, href, external }) => {
+const Button: FC<Props> = ({
+  children,
+  bgColor,
+  onClick,
+  href,
+  external,
+  mobile,
+}) => {
   const buttonStyles = css`
     background-color: ${bgColor ? bgColor : Colors.purple900};
     color: #ffffff;
@@ -28,6 +37,17 @@ const Button: FC<Props> = ({ children, bgColor, onClick, href, external }) => {
       opacity: 0.9;
       cursor: pointer;
     }
+
+    ${mobile
+      ? css`
+          display: flex;
+          width: 100%;
+          justify-content: center;
+          @media (min-width: ${Screens.sm}px) {
+            width: fit-content;
+          }
+        `
+      : ""}
   `;
 
   return (
