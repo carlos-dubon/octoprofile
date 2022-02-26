@@ -1,10 +1,13 @@
 import { FC } from "react";
 import { SectionTitle } from "../molecules/SectionTitle";
 import { css } from "@emotion/react";
+import Colors from "@app/styles/colors";
 import Screens from "@app/styles/breakpoints";
 import { UserCard } from "../molecules/UserCard";
 import bands from "public/bands.svg";
+import externalLink from "public/externalLink.svg";
 import Image from "next/image";
+import { Button } from "../atoms/Button";
 
 const RecentlySearched: FC = () => {
   // Get the last 7 profiles
@@ -54,8 +57,6 @@ const RecentlySearched: FC = () => {
     },
   ];
 
-  const bandsHeight: number = 387;
-
   const containerStyles = css`
     margin-top: 3.75em;
     display: flex;
@@ -73,7 +74,7 @@ const RecentlySearched: FC = () => {
     width: 100%;
     grid-template-columns: 1fr;
     gap: 1.5em;
-    // margin-bottom: -${bandsHeight * 0.4}px;
+    margin-bottom: 6em;
     @media (min-width: ${Screens.sm}px) {
       grid-template-columns: repeat(2, 1fr);
       width: fit-content;
@@ -118,25 +119,36 @@ const RecentlySearched: FC = () => {
       </div>
       <div
         css={css`
-          position: relative;
+          position: absolute;
           z-index: -1;
           width: 1832px;
           height: 387px;
-          //transform: translateY(-60%);
-          //top: calc(- (387 * 0.6)) px;
-          top: -${bandsHeight * 0.6}px;
-          margin-bottom: -20%;
+          transform: translateY(70%);
         `}
       >
-        <Image
-          src={bands}
-          alt={"bands"}
-          priority
-          width={1832}
-          height={bandsHeight}
-        />
+        <Image src={bands} alt={"bands"} priority width={1832} height={387} />
       </div>
-      <div>Hi i am a button</div>
+      <Button bgColor={Colors.gray900}>
+        <div
+          css={css`
+            display: flex;
+            align-items: center;
+            gap: 0.625em;
+            p {
+              margin: 0;
+            }
+          `}
+        >
+          <p>Contribute</p>
+          <Image
+            src={externalLink}
+            alt="External link"
+            width={16}
+            height={16}
+            priority
+          />
+        </div>
+      </Button>
     </div>
   );
 };

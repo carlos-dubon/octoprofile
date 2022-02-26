@@ -23,7 +23,7 @@ const Home: NextPage = () => {
         <Header />
         <Hero />
         <RecentlySearched />
-        {/* <div style={{ height: "2500px" }}></div> */}
+        <div style={{ height: "2500px" }}></div>
       </div>
       <HeroBgCircles />
     </div>
