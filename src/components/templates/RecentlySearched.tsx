@@ -5,7 +5,7 @@ import Screens from "@app/styles/breakpoints";
 import { UserCard } from "../molecules/UserCard";
 
 const RecentlySearched: FC = () => {
-  // i need the last 7 profiles
+  // Get the last 7 profiles
 
   const profiles = [
     {
@@ -65,25 +65,30 @@ const RecentlySearched: FC = () => {
 
   const gridStyles = css`
     display: grid;
-    width: fit-content;
-    gap: 1.5em;
     margin-top: 3em;
-    grid-template-columns: repeat(1, 1fr);
+    width: 100%;
+    grid-template-columns: 1fr;
+    gap: 1.5em;
     @media (min-width: ${Screens.sm}px) {
       grid-template-columns: repeat(2, 1fr);
+      width: fit-content;
+      .card:last-child {
+        transform: translateX(50%);
+      }
     }
-    @media (min-width: ${Screens.md}px) {
+    @media (min-width: ${Screens.lg}px) {
       grid-template-columns: repeat(3, 1fr);
+      .card:last-child {
+        grid-column: 2;
+        transform: translateX(0);
+      }
+      .card:nth-child(1),
+      .card:nth-child(3),
+      .card:nth-child(4),
+      .card:nth-child(6) {
+        transform: translateY(50%);
+      }
     }
-  `;
-
-  const columnStyles = css`
-    display: flex;
-    flex-direction: column;
-    width: fit-content;
-    height: 100%;
-    justify-content: center;
-    gap: 1.5em;
   `;
 
   return (
@@ -93,48 +98,18 @@ const RecentlySearched: FC = () => {
         subtitle="300+ GitHub profiles searched on OctoProfile"
       />
       <div css={gridStyles}>
-        <div css={columnStyles}>
-          {profiles.slice(0, 2).map((profile, index) => {
-            return (
-              <div key={index}>
-                <UserCard
-                  displayName={profile.displayName}
-                  picture={profile.profilePicture}
-                  url={profile.url}
-                  username={profile.username}
-                />
-              </div>
-            );
-          })}
-        </div>
-        <div css={columnStyles}>
-          {profiles.slice(2, 5).map((profile, index) => {
-            return (
-              <div key={index}>
-                <UserCard
-                  displayName={profile.displayName}
-                  picture={profile.profilePicture}
-                  url={profile.url}
-                  username={profile.username}
-                />
-              </div>
-            );
-          })}
-        </div>
-        <div css={columnStyles}>
-          {profiles.slice(5, 7).map((profile, index) => {
-            return (
-              <div key={index}>
-                <UserCard
-                  displayName={profile.displayName}
-                  picture={profile.profilePicture}
-                  url={profile.url}
-                  username={profile.username}
-                />
-              </div>
-            );
-          })}
-        </div>
+        {profiles.map((profile, index) => {
+          return (
+            <div key={index} className="card">
+              <UserCard
+                displayName={profile.displayName}
+                picture={profile.profilePicture}
+                url={profile.url}
+                username={profile.username}
+              />
+            </div>
+          );
+        })}
       </div>
     </div>
   );
