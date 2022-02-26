@@ -74,8 +74,9 @@ const RecentlySearched: FC = () => {
     width: 100%;
     grid-template-columns: 1fr;
     gap: 1.5em;
-    margin-bottom: 6em;
+    margin-bottom: 5em;
     @media (min-width: ${Screens.sm}px) {
+      margin-bottom: 6em;
       grid-template-columns: repeat(2, 1fr);
       width: fit-content;
       .card:last-child {
@@ -94,6 +95,23 @@ const RecentlySearched: FC = () => {
       .card:nth-child(6) {
         transform: translateY(50%);
       }
+    }
+  `;
+
+  const bandStyles = css`
+    position: absolute;
+    z-index: -1;
+    width: 1832px;
+    height: 387px;
+    transform: translateY(70%);
+  `;
+
+  const buttonStyles = css`
+    display: flex;
+    align-items: center;
+    gap: 0.625em;
+    p {
+      margin: 0;
     }
   `;
 
@@ -117,28 +135,14 @@ const RecentlySearched: FC = () => {
           );
         })}
       </div>
-      <div
-        css={css`
-          position: absolute;
-          z-index: -1;
-          width: 1832px;
-          height: 387px;
-          transform: translateY(70%);
-        `}
-      >
+      <div css={bandStyles}>
         <Image src={bands} alt={"bands"} priority width={1832} height={387} />
       </div>
-      <Button bgColor={Colors.gray900}>
-        <div
-          css={css`
-            display: flex;
-            align-items: center;
-            gap: 0.625em;
-            p {
-              margin: 0;
-            }
-          `}
-        >
+      <Button
+        bgColor={Colors.gray900}
+        href={"https://github.com/carlos-dubon/octoprofile"}
+      >
+        <div css={buttonStyles}>
           <p>Contribute</p>
           <Image
             src={externalLink}

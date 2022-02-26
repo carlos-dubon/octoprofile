@@ -1,14 +1,16 @@
 import { FC, MouseEventHandler, ReactNode } from "react";
 import { css } from "@emotion/react";
 import Colors from "@app/styles/colors";
+import Link from "next/link";
 
 interface Props {
   bgColor?: string;
   children?: ReactNode;
   onClick?: MouseEventHandler<HTMLButtonElement>;
+  href?: string;
 }
 
-const Button: FC<Props> = ({ children, bgColor, onClick }) => {
+const Button: FC<Props> = ({ children, bgColor, onClick, href }) => {
   const buttonStyles = css`
     background-color: ${bgColor ? bgColor : Colors.purple900};
     color: #ffffff;
@@ -22,15 +24,21 @@ const Button: FC<Props> = ({ children, bgColor, onClick }) => {
     line-height: 150%;
     text-align: center;
     &:hover {
-      opacity: 0.95;
+      opacity: 0.9;
       cursor: pointer;
     }
   `;
 
   return (
-    <button onClick={onClick} css={buttonStyles}>
-      {children}
-    </button>
+    <>
+      {href ? (
+        <Link href={href} passHref>
+          <a css={buttonStyles}>{children}</a>
+        </Link>
+      ) : (
+        <button css={buttonStyles}>{children}</button>
+      )}
+    </>
   );
 };
 
