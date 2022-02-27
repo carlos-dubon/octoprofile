@@ -115,7 +115,7 @@ const UserCard: FC<Props> = ({
               {loading ? <Skeleton width={160} /> : displayName}
             </p>
             <p css={usernameStyles}>
-              {loading ? <Skeleton width={160} /> : `@${username}`}
+              {loading ? <Skeleton height={15} width={160} /> : `@${username}`}
             </p>
           </div>
         </div>
