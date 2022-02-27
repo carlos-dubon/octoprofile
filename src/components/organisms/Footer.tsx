@@ -30,6 +30,9 @@ const Footer: FC = () => {
     @media (min-width: ${Screens.lg}px) {
       grid-template-areas: "logo copyright gitHub";
       justify-content: space-between;
+      padding-top: 0;
+      padding-bottom: 0;
+      min-height: 72px;
     }
   `;
 
@@ -59,6 +62,8 @@ const Footer: FC = () => {
     align-items: center;
   `;
 
+  const currentYear: string = new Date().getFullYear().toString();
+
   return (
     <div css={containerStyles}>
       <div className="container" css={footerStyles}>
@@ -75,7 +80,7 @@ const Footer: FC = () => {
           </Link>
         </div>
         <p css={copyrightStyles}>
-          © {new Date().getFullYear()} OctoProfile. All rights reserved
+          © {currentYear} OctoProfile. All rights reserved
         </p>
         <div css={gitHubStyles}>
           <TranslucentNavLink>
