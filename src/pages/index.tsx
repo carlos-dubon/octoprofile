@@ -3,7 +3,7 @@ import Head from "next/head";
 import { css } from "@emotion/react";
 import { Header, Footer } from "@lib/organisms";
 import { Hero, RecentlySearched } from "@lib/templates";
-import { HeroBgCircles } from "@lib/atoms";
+// import { HeroBgCircles } from "@lib/atoms";
 
 const Home: NextPage = () => {
   const pageStyles = css`
@@ -31,7 +31,7 @@ const Home: NextPage = () => {
         <RecentlySearched />
       </div>
       <Footer />
-      <HeroBgCircles />
+      {/* <HeroBgCircles /> */}
     </div>
   );
 };

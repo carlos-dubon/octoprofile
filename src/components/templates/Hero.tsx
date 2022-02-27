@@ -38,6 +38,26 @@ const Hero: FC = () => {
     validateOnMount: true,
   });
 
+  const circlesStyles = css`
+    position: absolute;
+    z-index: -1;
+    width: 828px;
+    height: 861px;
+    transform: translateX(7%) translateY(-50%);
+    @media (min-width: ${Screens.sm}px) {
+      transform: translateX(15%) translateY(-48%);
+    }
+    @media (min-width: ${Screens.md}px) {
+      transform: translateX(25%) translateY(-38%);
+    }
+    @media (min-width: ${Screens.lg}px) {
+      transform: translateX(65%) translateY(-40%);
+    }
+    @media (min-width: ${Screens.xl}px) {
+      transform: translateX(70%) translateY(-20%);
+    }
+  `;
+
   const gridStyles = css`
     display: grid;
     gap: 2.75em;
@@ -100,6 +120,15 @@ const Hero: FC = () => {
 
   return (
     <>
+      <div css={circlesStyles}>
+        <Image
+          src="/circles.svg"
+          alt="circles"
+          width={828}
+          height={861}
+          priority
+        />
+      </div>
       <div css={gridStyles}>
         <div css={textAreaStyles}>
           <h1 css={headingStyles}>Get your own OctoProfile</h1>
