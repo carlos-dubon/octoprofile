@@ -4,6 +4,7 @@ import Link from "next/link";
 import { css } from "@emotion/react";
 import Colors from "@app/styles/colors";
 import Screens from "@app/styles/breakpoints";
+import Skeleton from "react-loading-skeleton";
 
 interface Props {
   url?: string;
@@ -57,7 +58,7 @@ const UserCard: FC<Props> = ({
     overflow: hidden;
     margin-left: 16px;
     margin-right: 16px;
-    background: ${Colors.gray200};
+    background: #ebebeb;
   `;
 
   const displayNameStyles = css`
@@ -88,12 +89,8 @@ const UserCard: FC<Props> = ({
     }
   `;
 
-  if (loading) {
-    return <div css={containerSytles}>Loading ...</div>;
-  }
-
   return (
-    <Link href={url!} passHref>
+    <Link href={url || ""} passHref={!loading} scroll={!loading}>
       <a css={containerSytles}>
         <div
           css={css`
@@ -101,7 +98,11 @@ const UserCard: FC<Props> = ({
           `}
         >
           <div css={pictureStyles}>
-            <Image src={picture!} alt={username} width={60} height={60} />
+            {loading ? (
+              <Skeleton circle height="100%" />
+            ) : (
+              <Image src={picture!} alt={username} width={60} height={60} />
+            )}
           </div>
           <div
             css={css`
@@ -110,8 +111,12 @@ const UserCard: FC<Props> = ({
               color: ${Colors.gray900};
             `}
           >
-            <p css={displayNameStyles}>{displayName}</p>
-            <p css={usernameStyles}>@{username}</p>
+            <p css={displayNameStyles}>
+              {loading ? <Skeleton width={160} /> : displayName}
+            </p>
+            <p css={usernameStyles}>
+              {loading ? <Skeleton width={160} /> : `@${username}`}
+            </p>
           </div>
         </div>
       </a>

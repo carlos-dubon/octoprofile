@@ -79,7 +79,7 @@ const UsersGrid: FC = () => {
         },
       ]);
       setLoading(false);
-    }, 3000);
+    }, 5000);
   }, []);
 
   const gridStyles = css`
