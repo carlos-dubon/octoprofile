@@ -83,23 +83,27 @@ const Footer: FC = () => {
           © {currentYear} OctoProfile. All rights reserved
         </p>
         <div css={gitHubStyles}>
-          <TranslucentNavLink>
-            <div
-              css={css`
-                display: grid;
-                align-items: center;
-                width: 28px;
-                height: 28px;
-              `}
-            >
-              <Image
-                src="/icons/github.svg"
-                alt="github"
-                width={18}
-                height={18}
-              />
-            </div>
-          </TranslucentNavLink>
+          <Link href="https://github.com/carlos-dubon/octoprofile">
+            <a>
+              <TranslucentNavLink>
+                <div
+                  css={css`
+                    display: grid;
+                    align-items: center;
+                    width: 28px;
+                    height: 28px;
+                  `}
+                >
+                  <Image
+                    src="/icons/github.svg"
+                    alt="github"
+                    width={18}
+                    height={18}
+                  />
+                </div>
+              </TranslucentNavLink>
+            </a>
+          </Link>
         </div>
       </div>
     </div>
