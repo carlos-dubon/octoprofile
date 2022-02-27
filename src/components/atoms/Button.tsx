@@ -34,7 +34,7 @@ const Button: FC<Props> = ({
     line-height: 150%;
     text-align: center;
     &:hover {
-      opacity: 0.9;
+      opacity: 0.95;
       cursor: pointer;
     }
 

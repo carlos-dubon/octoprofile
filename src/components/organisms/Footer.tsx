@@ -38,7 +38,7 @@ const Footer: FC = () => {
 
   const logoStyles = css`
     grid-area: logo;
-    width: 100;
+    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -48,7 +48,7 @@ const Footer: FC = () => {
     margin: 0;
     grid-area: copyright;
     text-align: center;
-    width: 100;
+    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -56,7 +56,7 @@ const Footer: FC = () => {
 
   const gitHubStyles = css`
     grid-area: gitHub;
-    width: 100;
+    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -88,7 +88,8 @@ const Footer: FC = () => {
               css={css`
                 display: grid;
                 align-items: center;
-                width: 2em;
+                width: 28px;
+                height: 28px;
               `}
             >
               <Image

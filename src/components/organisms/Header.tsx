@@ -102,6 +102,7 @@ const Header: FC = () => {
                   display: grid;
                   align-items: center;
                   width: 2em;
+                  height: 2em;
                 `}
               >
                 <Image
@@ -127,6 +128,8 @@ const Header: FC = () => {
                   display: flex;
                   gap: 0.5em;
                   padding: 0 0.75em;
+                  height: 2em;
+                  align-items: center;
                 `}
               >
                 <Image

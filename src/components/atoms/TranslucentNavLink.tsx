@@ -13,7 +13,6 @@ const TranslucentNavLink: FC<Props> = ({ href, onClick, children }) => {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 2em;
     color: white;
     background-color: rgba(255, 255, 255, 0.1);
     border-radius: 999999px;
