@@ -6,13 +6,20 @@ import Colors from "@app/styles/colors";
 import Screens from "@app/styles/breakpoints";
 
 interface Props {
-  url: string;
-  picture: string;
-  displayName: string;
-  username: string;
+  url?: string;
+  picture?: string;
+  displayName?: string;
+  username?: string;
+  loading: boolean;
 }
 
-const UserCard: FC<Props> = ({ url, picture, displayName, username }) => {
+const UserCard: FC<Props> = ({
+  url,
+  picture,
+  displayName,
+  username,
+  loading,
+}) => {
   const textWidth: number = 185;
   const smTextWidth: number = 160;
 
@@ -25,10 +32,16 @@ const UserCard: FC<Props> = ({ url, picture, displayName, username }) => {
     background: #ffffff;
     box-shadow: 0px 30px 40px rgba(212, 217, 232, 0.2);
     border-radius: 16px;
-    &:hover {
-      cursor: pointer;
-      background: ${Colors.grayHover};
-    }
+
+    ${loading
+      ? ""
+      : css`
+          &:hover {
+            cursor: pointer;
+            background: ${Colors.grayHover};
+          }
+        `}
+
     @media (min-width: ${Screens.sm}px) {
       width: 270px;
       min-width: 270px;
@@ -75,8 +88,12 @@ const UserCard: FC<Props> = ({ url, picture, displayName, username }) => {
     }
   `;
 
+  if (loading) {
+    return <div css={containerSytles}>Loading ...</div>;
+  }
+
   return (
-    <Link href={url} passHref>
+    <Link href={url!} passHref>
       <a css={containerSytles}>
         <div
           css={css`
@@ -84,7 +101,7 @@ const UserCard: FC<Props> = ({ url, picture, displayName, username }) => {
           `}
         >
           <div css={pictureStyles}>
-            <Image src={picture} alt={username} width={60} height={60} />
+            <Image src={picture!} alt={username} width={60} height={60} />
           </div>
           <div
             css={css`
