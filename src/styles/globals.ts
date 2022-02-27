@@ -38,6 +38,10 @@ const globalStyles: SerializedStyles = css`
     justify-content: center;
   }
 
+  #__next {
+    width: 100%;
+  }
+
   .container {
     display: flex;
     width: 1150px;
