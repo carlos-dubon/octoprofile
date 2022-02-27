@@ -10,8 +10,10 @@ import { useSignInWithGithub } from "react-firebase-hooks/auth";
 import { auth } from "@app/firebase";
 import toast from "react-hot-toast";
 import axios from "axios";
+import { NextRouter, useRouter } from "next/router";
 
 const Header: FC = () => {
+  const router: NextRouter = useRouter();
   const [signInWithGitHub, user, loading, error] = useSignInWithGithub(auth);
 
   const containerStyles = css`
@@ -63,14 +65,14 @@ const Header: FC = () => {
         `https://api.github.com/user/${gitHubUid}`
       );
 
-      // success
-      console.log(gitHubUser);
+      const username: string = gitHubUser.data.login;
+      router.push(`/${username}`);
 
       toast.dismiss();
     };
 
     getUserId();
-  }, [user, loading]);
+  }, [user, loading, router]);
 
   return (
     <div css={containerStyles}>
