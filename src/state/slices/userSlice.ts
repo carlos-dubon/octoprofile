@@ -3,10 +3,10 @@ import { createSlice } from "@reduxjs/toolkit";
 export interface User {
   displayName: string;
   avatarUrl: string;
-  company: string;
+  company: string | null;
   followers: number;
   following: number;
-  location: string;
+  location: string | null;
   username: string;
   amountOfRepos: number;
   createdAtUnixTime: number;
@@ -34,17 +34,17 @@ export const userSlice = createSlice({
   name: "user",
   initialState,
   reducers: {
-    set: (currState: User, setAction: SetAction) => {
+    setUser: (currState: User, setAction: SetAction) => {
       currState = setAction.payload;
       return currState;
     },
-    clear: (currState: User) => {
+    clearUser: (currState: User) => {
       currState = emptyUser();
       return currState;
     },
   },
 });
 
-export const { set } = userSlice.actions;
+export const { setUser, clearUser } = userSlice.actions;
 
 export default userSlice.reducer;

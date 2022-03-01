@@ -884,6 +884,11 @@ ast-types-flow@^0.0.7:
   resolved "https://registry.npmjs.org/ast-types-flow/-/ast-types-flow-0.0.7.tgz"
   integrity sha1-9wtzXGvKGlycItmCw+Oef+ujva0=
 
+await-to-ts@^1.0.6:
+  version "1.0.6"
+  resolved "https://registry.yarnpkg.com/await-to-ts/-/await-to-ts-1.0.6.tgz#62e87400ebfb052c382cc34c3d24c6e1b39c54ba"
+  integrity sha1-Yuh0AOv7BSw4LMNMPSTG4bOcVLo=
+
 axe-core@^4.3.5:
   version "4.4.1"
   resolved "https://registry.npmjs.org/axe-core/-/axe-core-4.4.1.tgz"

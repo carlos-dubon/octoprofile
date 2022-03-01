@@ -3,8 +3,20 @@ import Head from "next/head";
 import { css } from "@emotion/react";
 import { Header, Footer } from "@lib/organisms";
 import { Hero, RecentlySearched } from "@lib/templates";
+import { useAppDispatch } from "@app/hooks";
+import { useEffect } from "react";
+import { clearUser } from "src/state/slices/userSlice";
+import { setLoadingUser, setLoadingRepos } from "src/state/slices/loadersSlice";
 
 const Home: NextPage = () => {
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    dispatch(clearUser());
+    dispatch(setLoadingUser(true));
+    dispatch(setLoadingRepos(true));
+  }, [dispatch]);
+
   const pageStyles = css`
     width: 100%;
     display: flex;

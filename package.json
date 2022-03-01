@@ -17,6 +17,7 @@
     "@emotion/react": "^11.7.1",
     "@reduxjs/toolkit": "^1.8.0",
     "@tippyjs/react": "^4.2.6",
+    "await-to-ts": "^1.0.6",
     "axios": "^0.26.0",
     "baby-i-am-faded": "^4.0.10",
     "date-fns": "^2.28.0",

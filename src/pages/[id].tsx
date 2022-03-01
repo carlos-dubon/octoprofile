@@ -2,19 +2,13 @@ import type { NextPage } from "next";
 import Head from "next/head";
 import { useRouter, NextRouter } from "next/router";
 import { UserHero } from "@lib/templates";
-import { useAppSelector, useGetUser } from "@app/hooks";
-import { User } from "src/state/slices/userSlice";
+import { useGetUser } from "@app/hooks";
 
 const Profile: NextPage = () => {
   const router: NextRouter = useRouter();
   const { id } = router.query;
 
-  const loadingUser: boolean = useAppSelector(
-    (state) => state.loaders.loadingUser
-  );
-  const user: User = useAppSelector((state) => state.user);
-
-  useGetUser(id);
+  const [user, loading] = useGetUser(id);
 
   return (
     <div>
@@ -29,7 +23,7 @@ const Profile: NextPage = () => {
 
       <UserHero />
       <div>{id}</div>
-      <div>{!loadingUser && JSON.stringify(user)}</div>
+      <div>{!loading && JSON.stringify(user)}</div>
     </div>
   );
 };
