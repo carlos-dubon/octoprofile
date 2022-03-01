@@ -33,7 +33,6 @@ const Home: NextPage = () => {
         <RecentlySearched />
       </div>
       <Footer />
-      {/* <HeroBgCircles /> */}
     </div>
   );
 };

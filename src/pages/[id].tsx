@@ -1,6 +1,7 @@
 import type { NextPage } from "next";
 import Head from "next/head";
 import { useRouter, NextRouter } from "next/router";
+import { UserHero } from "@lib/templates";
 const Profile: NextPage = () => {
   const router: NextRouter = useRouter();
   const { id } = router.query;
@@ -15,6 +16,8 @@ const Profile: NextPage = () => {
         />
         <link rel="icon" type="image/png" href="/favicon.png" />
       </Head>
+
+      <UserHero />
       <div>{id}</div>
     </div>
   );
