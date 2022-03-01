@@ -6,18 +6,22 @@ import { Global, css } from "@emotion/react";
 import "tippy.js/dist/tippy.css";
 import "tippy.js/animations/shift-away.css";
 import { Toaster } from "react-hot-toast";
+import { store } from "@app/store";
+import { Provider } from "react-redux";
 
 const MyApp = ({ Component, pageProps }: AppProps) => {
   return (
     <>
-      <Global
-        styles={css`
-          ${globalStyles}
-        `}
-      />
+      <Provider store={store}>
+        <Global
+          styles={css`
+            ${globalStyles}
+          `}
+        />
 
-      <Component {...pageProps} />
-      <Toaster position="bottom-center" />
+        <Component {...pageProps} />
+        <Toaster position="bottom-center" />
+      </Provider>
     </>
   );
 };

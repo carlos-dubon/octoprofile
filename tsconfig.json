@@ -22,7 +22,9 @@
       "@lib/molecules": ["./src/components/molecules"],
       "@lib/organisms": ["./src/components/organisms"],
       "@lib/templates": ["./src/components/templates"],
-      "@app/firebase": ["./src/firebase"]
+      "@app/firebase": ["./src/firebase"],
+      "@app/hooks": ["./src/hooks"],
+      "@app/store": ["./src/state"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
