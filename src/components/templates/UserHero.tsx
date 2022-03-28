@@ -8,6 +8,7 @@ import Skeleton from "react-loading-skeleton";
 import Link from "next/link";
 import Tippy from "@tippyjs/react";
 import { ProfilePicture } from "@lib/molecules";
+import { formatUnixDate } from "@lib/helpers";
 
 const UserHero: FC = () => {
   const user = useAppSelector((state) => state.user);
@@ -144,6 +145,17 @@ const UserHero: FC = () => {
               </a>
             </Link>
           )}
+
+          <div
+            css={css`
+              font-size: 1.125em;
+              font-weight: 400;
+            `}
+          >
+            Joined{" "}
+            {!loadingUser &&
+              formatUnixDate(user.createdAtUnixTime, "MMM d',' yyyy")}
+          </div>
         </div>
       </div>
     </div>
