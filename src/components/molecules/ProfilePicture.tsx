@@ -2,7 +2,7 @@ import { FC } from "react";
 import { css } from "@emotion/react";
 import Skeleton from "react-loading-skeleton";
 import Image from "next/image";
-import { useAppSelector } from "@app/hooks";
+import { useGetUser } from "@app/hooks";
 
 const ProfilePicture: FC = () => {
   const containerStyles = css`
@@ -17,12 +17,11 @@ const ProfilePicture: FC = () => {
     box-shadow: 0px 10px 20px rgba(41, 41, 42, 0.07);
   `;
 
-  const user = useAppSelector((state) => state.user);
-  const loadingUser = useAppSelector((state) => state.loaders.loadingUser);
+  const [user, loading] = useGetUser();
 
   return (
     <div css={containerStyles}>
-      {loadingUser ? (
+      {loading ? (
         <div
           css={css`
             width: 208px;

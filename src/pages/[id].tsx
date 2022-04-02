@@ -8,7 +8,7 @@ const Profile: NextPage = () => {
   const router: NextRouter = useRouter();
   const { id } = router.query;
 
-  const [user, loading] = useGetUser(id);
+  const [user, loading] = useGetUser(id?.toString());
 
   return (
     <div>

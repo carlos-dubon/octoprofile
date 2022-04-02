@@ -3,7 +3,7 @@ import { css } from "@emotion/react";
 import Colors from "@app/styles/colors";
 import Image from "next/image";
 import { TranslucentNavLink, TranslucentIcon } from "@lib/atoms";
-import { useAppSelector } from "@app/hooks";
+import { useGetUser } from "@app/hooks";
 import Skeleton from "react-loading-skeleton";
 import Link from "next/link";
 import Tippy from "@tippyjs/react";
@@ -28,8 +28,7 @@ const InfoSkeleton: FC = () => {
 };
 
 const UserHero: FC = () => {
-  const user = useAppSelector((state) => state.user);
-  const loadingUser = useAppSelector((state) => state.loaders.loadingUser);
+  const [user, loading] = useGetUser();
 
   const containerStyles = css`
     display: flex;
@@ -109,7 +108,7 @@ const UserHero: FC = () => {
 
           <ProfilePicture />
 
-          {loadingUser ? (
+          {loading ? (
             <div
               css={css`
                 width: 330px;
@@ -136,7 +135,7 @@ const UserHero: FC = () => {
             </h1>
           )}
 
-          {loadingUser ? (
+          {loading ? (
             <div
               css={css`
                 width: 140px;
@@ -179,7 +178,7 @@ const UserHero: FC = () => {
               gap: 2em;
             `}
           >
-            {loadingUser ? (
+            {loading ? (
               <InfoSkeleton />
             ) : (
               user.company && (
@@ -192,7 +191,7 @@ const UserHero: FC = () => {
               )
             )}
 
-            {loadingUser ? (
+            {loading ? (
               <InfoSkeleton />
             ) : (
               user.location && (
@@ -205,7 +204,7 @@ const UserHero: FC = () => {
               )
             )}
 
-            {loadingUser ? (
+            {loading ? (
               <InfoSkeleton />
             ) : (
               <div css={infoStyles}>
