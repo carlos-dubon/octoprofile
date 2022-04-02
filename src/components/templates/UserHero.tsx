@@ -13,7 +13,7 @@ import calendar from "public/icons/calendar.svg";
 import location from "public/icons/location.svg";
 import briefcase from "public/icons/briefcase.svg";
 
-const StatSkeleton: FC = () => {
+const InfoSkeleton: FC = () => {
   const containerStyles = css`
     display: flex;
     gap: 0.5em;
@@ -71,7 +71,7 @@ const UserHero: FC = () => {
     font-size: 0.875em;
   `;
 
-  const statStyles = css`
+  const infoStyles = css`
     font-size: 1.125em;
     font-weight: 400;
     display: flex;
@@ -180,10 +180,10 @@ const UserHero: FC = () => {
             `}
           >
             {loadingUser ? (
-              <StatSkeleton />
+              <InfoSkeleton />
             ) : (
               user.company && (
-                <div css={statStyles}>
+                <div css={infoStyles}>
                   <TranslucentIcon>
                     <Image src={briefcase} alt={"Briefcase icon"} priority />
                   </TranslucentIcon>
@@ -193,10 +193,10 @@ const UserHero: FC = () => {
             )}
 
             {loadingUser ? (
-              <StatSkeleton />
+              <InfoSkeleton />
             ) : (
               user.location && (
-                <div css={statStyles}>
+                <div css={infoStyles}>
                   <TranslucentIcon>
                     <Image src={location} alt={"Location icon"} priority />
                   </TranslucentIcon>
@@ -206,9 +206,9 @@ const UserHero: FC = () => {
             )}
 
             {loadingUser ? (
-              <StatSkeleton />
+              <InfoSkeleton />
             ) : (
-              <div css={statStyles}>
+              <div css={infoStyles}>
                 <TranslucentIcon>
                   <Image src={calendar} alt={"Calendar icon"} priority />
                 </TranslucentIcon>
