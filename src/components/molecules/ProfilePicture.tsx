@@ -13,7 +13,7 @@ const ProfilePicture: FC = () => {
     width: 225px;
     height: 225px;
     border-radius: 50%;
-    margin-top: 3.75em;
+    margin-top: 4em;
     box-shadow: 0px 10px 20px rgba(41, 41, 42, 0.07);
   `;
 

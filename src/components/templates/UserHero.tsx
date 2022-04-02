@@ -126,7 +126,7 @@ const UserHero: FC = () => {
                 font-size: 3em;
                 font-weight: 800;
                 width: fit-content;
-                margin-top: 0.5em;
+                margin-top: 0.625em;
                 margin-bottom: 0.2em;
                 text-align: center;
               `}
@@ -173,8 +173,7 @@ const UserHero: FC = () => {
           <div
             css={css`
               display: flex;
-              margin-top: 1.5em;
-              margin-bottom: 1.5em;
+              margin-top: 2.25em;
               gap: 2em;
             `}
           >
