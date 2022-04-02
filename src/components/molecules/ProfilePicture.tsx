@@ -1,5 +1,4 @@
 import { FC } from "react";
-import Colors from "@app/styles/colors";
 import { css } from "@emotion/react";
 import Skeleton from "react-loading-skeleton";
 import Image from "next/image";
@@ -28,7 +27,6 @@ const ProfilePicture: FC = () => {
           css={css`
             width: 208px;
             height: 208px;
-            background: ${Colors.grayHover};
             border-radius: 50%;
           `}
         >

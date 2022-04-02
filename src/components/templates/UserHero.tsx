@@ -2,13 +2,30 @@ import { FC } from "react";
 import { css } from "@emotion/react";
 import Colors from "@app/styles/colors";
 import Image from "next/image";
-import { TranslucentNavLink } from "@lib/atoms";
+import { TranslucentNavLink, TranslucentIcon } from "@lib/atoms";
 import { useAppSelector } from "@app/hooks";
 import Skeleton from "react-loading-skeleton";
 import Link from "next/link";
 import Tippy from "@tippyjs/react";
 import { ProfilePicture } from "@lib/molecules";
 import { formatUnixDate } from "@lib/helpers";
+import calendar from "public/icons/calendar.svg";
+import location from "public/icons/location.svg";
+import briefcase from "public/icons/briefcase.svg";
+
+const StatSkeleton: FC = () => {
+  const containerStyles = css`
+    display: flex;
+    gap: 0.5em;
+  `;
+
+  return (
+    <div css={containerStyles}>
+      <Skeleton circle height={32} width={32} />
+      <Skeleton width={160} height={32} />
+    </div>
+  );
+};
 
 const UserHero: FC = () => {
   const user = useAppSelector((state) => state.user);
@@ -52,6 +69,14 @@ const UserHero: FC = () => {
     height: 2em;
     align-items: center;
     font-size: 0.875em;
+  `;
+
+  const statStyles = css`
+    font-size: 1.125em;
+    font-weight: 400;
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
   `;
 
   return (
@@ -120,7 +145,7 @@ const UserHero: FC = () => {
                 font-size: 3em;
               `}
             >
-              <Skeleton width={140} height={29} />
+              <Skeleton width={180} height={29} />
             </div>
           ) : (
             <Link href={`https://github.com/${user.username}`} passHref>
@@ -148,13 +173,48 @@ const UserHero: FC = () => {
 
           <div
             css={css`
-              font-size: 1.125em;
-              font-weight: 400;
+              display: flex;
+              margin-top: 1.5em;
+              margin-bottom: 1.5em;
+              gap: 2em;
             `}
           >
-            Joined{" "}
-            {!loadingUser &&
-              formatUnixDate(user.createdAtUnixTime, "MMM d',' yyyy")}
+            {loadingUser ? (
+              <StatSkeleton />
+            ) : (
+              user.company && (
+                <div css={statStyles}>
+                  <TranslucentIcon>
+                    <Image src={briefcase} alt={"Briefcase icon"} priority />
+                  </TranslucentIcon>
+                  {user.company}
+                </div>
+              )
+            )}
+
+            {loadingUser ? (
+              <StatSkeleton />
+            ) : (
+              user.location && (
+                <div css={statStyles}>
+                  <TranslucentIcon>
+                    <Image src={location} alt={"Location icon"} priority />
+                  </TranslucentIcon>
+                  {user.location}
+                </div>
+              )
+            )}
+
+            {loadingUser ? (
+              <StatSkeleton />
+            ) : (
+              <div css={statStyles}>
+                <TranslucentIcon>
+                  <Image src={calendar} alt={"Calendar icon"} priority />
+                </TranslucentIcon>
+                Joined {formatUnixDate(user.createdAtUnixTime, "MMM d',' yyyy")}
+              </div>
+            )}
           </div>
         </div>
       </div>
