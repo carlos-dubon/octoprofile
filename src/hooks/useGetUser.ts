@@ -8,9 +8,12 @@ import getUnixTime from "date-fns/getUnixTime";
 import parseISO from "date-fns/parseISO";
 import to from "await-to-ts";
 
-const useGetUser = (
-  username: string | string[] | undefined
-): [User | null, boolean, Error | null] => {
+// eslint-disable-next-line valid-jsdoc
+/**
+ *
+ * use throughout the app instead of `useAppSelector((state) => state.user);` to get user data
+ */
+const useGetUser = (username?: string): [User, boolean, Error | null] => {
   const dispatch = useAppDispatch();
 
   const user = useAppSelector((state) => state.user);

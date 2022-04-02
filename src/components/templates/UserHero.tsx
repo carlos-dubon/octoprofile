@@ -2,16 +2,33 @@ import { FC } from "react";
 import { css } from "@emotion/react";
 import Colors from "@app/styles/colors";
 import Image from "next/image";
-import { TranslucentNavLink } from "@lib/atoms";
-import { useAppSelector } from "@app/hooks";
+import { TranslucentNavLink, TranslucentIcon } from "@lib/atoms";
+import { useGetUser } from "@app/hooks";
 import Skeleton from "react-loading-skeleton";
 import Link from "next/link";
 import Tippy from "@tippyjs/react";
 import { ProfilePicture } from "@lib/molecules";
+import { formatUnixDate } from "@lib/helpers";
+import calendar from "public/icons/calendar.svg";
+import location from "public/icons/location.svg";
+import briefcase from "public/icons/briefcase.svg";
+
+const InfoSkeleton: FC = () => {
+  const containerStyles = css`
+    display: flex;
+    gap: 0.5em;
+  `;
+
+  return (
+    <div css={containerStyles}>
+      <Skeleton circle height={32} width={32} />
+      <Skeleton width={160} height={32} />
+    </div>
+  );
+};
 
 const UserHero: FC = () => {
-  const user = useAppSelector((state) => state.user);
-  const loadingUser = useAppSelector((state) => state.loaders.loadingUser);
+  const [user, loading] = useGetUser();
 
   const containerStyles = css`
     display: flex;
@@ -53,6 +70,14 @@ const UserHero: FC = () => {
     font-size: 0.875em;
   `;
 
+  const infoStyles = css`
+    font-size: 1.125em;
+    font-weight: 400;
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
+  `;
+
   return (
     <div css={containerStyles}>
       <div css={wavesStyles}>
@@ -83,7 +108,7 @@ const UserHero: FC = () => {
 
           <ProfilePicture />
 
-          {loadingUser ? (
+          {loading ? (
             <div
               css={css`
                 width: 330px;
@@ -110,7 +135,7 @@ const UserHero: FC = () => {
             </h1>
           )}
 
-          {loadingUser ? (
+          {loading ? (
             <div
               css={css`
                 width: 140px;
@@ -119,7 +144,7 @@ const UserHero: FC = () => {
                 font-size: 3em;
               `}
             >
-              <Skeleton width={140} height={29} />
+              <Skeleton width={180} height={29} />
             </div>
           ) : (
             <Link href={`https://github.com/${user.username}`} passHref>
@@ -144,6 +169,52 @@ const UserHero: FC = () => {
               </a>
             </Link>
           )}
+
+          <div
+            css={css`
+              display: flex;
+              margin-top: 1.5em;
+              margin-bottom: 1.5em;
+              gap: 2em;
+            `}
+          >
+            {loading ? (
+              <InfoSkeleton />
+            ) : (
+              user.company && (
+                <div css={infoStyles}>
+                  <TranslucentIcon>
+                    <Image src={briefcase} alt={"Briefcase icon"} priority />
+                  </TranslucentIcon>
+                  {user.company}
+                </div>
+              )
+            )}
+
+            {loading ? (
+              <InfoSkeleton />
+            ) : (
+              user.location && (
+                <div css={infoStyles}>
+                  <TranslucentIcon>
+                    <Image src={location} alt={"Location icon"} priority />
+                  </TranslucentIcon>
+                  {user.location}
+                </div>
+              )
+            )}
+
+            {loading ? (
+              <InfoSkeleton />
+            ) : (
+              <div css={infoStyles}>
+                <TranslucentIcon>
+                  <Image src={calendar} alt={"Calendar icon"} priority />
+                </TranslucentIcon>
+                Joined {formatUnixDate(user.createdAtUnixTime, "MMM d',' yyyy")}
+              </div>
+            )}
+          </div>
         </div>
       </div>
     </div>
