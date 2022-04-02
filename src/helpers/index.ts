@@ -1,4 +1,4 @@
 import { formatUnixDate } from "./formatUnixDate";
-import { numberWithCommas } from "./numberWithCommas";
+import { formatLargeNumber } from "./formatLargeNumber";
 
-export { formatUnixDate, numberWithCommas };
+export { formatUnixDate, formatLargeNumber };

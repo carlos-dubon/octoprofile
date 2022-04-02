@@ -4,7 +4,7 @@ import Skeleton from "react-loading-skeleton";
 import hexagon from "public/hexagon.svg";
 import { css } from "@emotion/react";
 import Colors from "@app/styles/colors";
-import { numberWithCommas } from "@lib/helpers";
+import { formatLargeNumber } from "@lib/helpers";
 
 interface Props {
   value: number;
@@ -76,7 +76,7 @@ const Stat: FC<Props> = ({ value, label, loading = true }) => {
           </div>
         ) : (
           <div css={divStyles}>
-            <div css={valueStyles}>{numberWithCommas(value)}</div>
+            <div css={valueStyles}>{formatLargeNumber(value)}</div>
             <div css={labelStyles}>{label}</div>
           </div>
         )}
