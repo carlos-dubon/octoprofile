@@ -1,3 +1,4 @@
+import { GitHubApiUser } from "@app/types/gitHubApi";
 import { useAppSelector } from "./useAppSelector";
 import { useAppDispatch } from "@app/hooks";
 import axios from "axios";
@@ -25,7 +26,7 @@ const useGetUser = (username?: string): [User, boolean, Error | null] => {
       dispatch(setLoadingUser(true));
 
       const [err, res] = await to(
-        axios.get(`https://api.github.com/users/${username}`)
+        axios.get<GitHubApiUser>(`https://api.github.com/users/${username}`)
       );
 
       setError(err);
@@ -48,10 +49,10 @@ const useGetUser = (username?: string): [User, boolean, Error | null] => {
       dispatch(setLoadingUser(false));
     };
 
-    if (username) {
+    if (username && !user.username) {
       getUser();
     }
-  }, [username, dispatch]);
+  }, [username, dispatch, user]);
 
   return [user, loading, error];
 };

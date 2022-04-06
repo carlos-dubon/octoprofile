@@ -1,3 +1,0 @@
-const useGetRepos = () => {};
-
-export { useGetRepos };
