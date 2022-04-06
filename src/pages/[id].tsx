@@ -1,7 +1,7 @@
 import type { NextPage } from "next";
 import Head from "next/head";
 import { useRouter, NextRouter } from "next/router";
-import { UserHero, Stats } from "@lib/templates";
+import { UserHero, Stats, UsefulCharts } from "@lib/templates";
 import { useGetUser } from "@app/hooks";
 
 const Profile: NextPage = () => {
@@ -23,6 +23,7 @@ const Profile: NextPage = () => {
 
       <UserHero />
       <Stats />
+      <UsefulCharts />
       <div>{id}</div>
       <div>{!loading && JSON.stringify(user)}</div>
     </div>

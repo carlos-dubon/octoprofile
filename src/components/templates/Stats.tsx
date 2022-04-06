@@ -9,7 +9,7 @@ const Stats: FC = () => {
     width: 100%;
     display: flex;
     justify-content: center;
-    gap: 0.5em;
+    gap: 0.35em;
     padding-left: 1em;
     padding-right: 1em;
     transform: translateY(-50%);
