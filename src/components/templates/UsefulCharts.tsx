@@ -1,6 +1,7 @@
 import { FC } from "react";
 import { SectionTitle } from "@lib/molecules";
 import { css } from "@emotion/react";
+import { Card } from "@lib/atoms";
 
 const UsefulCharts: FC = () => {
   const containerStyles = css`
@@ -23,6 +24,8 @@ const UsefulCharts: FC = () => {
           title="Some useful charts"
           subtitle="Charts are a fun way to visualize data!"
         />
+
+        <Card>Hello world</Card>
       </div>
     </div>
   );
