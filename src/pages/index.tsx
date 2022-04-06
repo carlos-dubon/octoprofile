@@ -7,12 +7,14 @@ import { useAppDispatch } from "@app/hooks";
 import { useEffect } from "react";
 import { clearUser } from "src/state/slices/userSlice";
 import { setLoadingUser, setLoadingRepos } from "src/state/slices/loadersSlice";
+import { clearRepos } from "src/state/slices/reposSlice";
 
 const Home: NextPage = () => {
   const dispatch = useAppDispatch();
 
   useEffect(() => {
     dispatch(clearUser());
+    dispatch(clearRepos());
     dispatch(setLoadingUser(true));
     dispatch(setLoadingRepos(true));
   }, [dispatch]);

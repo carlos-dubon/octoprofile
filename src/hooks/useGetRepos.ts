@@ -6,6 +6,11 @@ import axios from "axios";
 import to from "await-to-ts";
 import { Repo, setRepos } from "src/state/slices/reposSlice";
 
+// eslint-disable-next-line valid-jsdoc
+/**
+ *
+ * use throughout the app instead of `useAppSelector((state) => state.repos);` to get repos data
+ */
 const useGetRepos = () => {
   const dispatch = useAppDispatch();
 
