@@ -115,11 +115,12 @@ const UserHero: FC = () => {
   const infoItemsContainer = css`
     display: flex;
     margin-top: 2.25em;
-    gap: 2em;
+    gap: 1.25em;
     flex-direction: column;
     align-items: center;
     @media (min-width: ${Screens.md}px) {
       flex-direction: row;
+      gap: 2em;
     }
   `;
 
