@@ -19,6 +19,20 @@ const Stat: FC<Props> = ({ value, label, loading = true }) => {
   `;
 
   const hexagonStyles = css`
+    width: 125px;
+    height: 125px;
+    @media (min-width: ${Screens.sm}px) {
+      width: 196px;
+      height: 196px;
+    }
+    @media (min-width: ${Screens.md}px) {
+      width: 238px;
+      height: 238px;
+    }
+    @media (min-width: ${Screens.lg}px) {
+      width: 255px;
+      height: 255px;
+    }
     filter: drop-shadow(0px 10px 20px rgba(41, 41, 42, 0.07));
   `;
 
@@ -85,13 +99,7 @@ const Stat: FC<Props> = ({ value, label, loading = true }) => {
   return (
     <div css={containerStyles}>
       <div css={hexagonStyles}>
-        <Image
-          src={hexagon}
-          alt={"Hexagon shape"}
-          width={255}
-          height={255}
-          priority
-        />
+        <Image src={hexagon} alt={"Hexagon shape"} layout="fill" priority />
       </div>
 
       <div css={contentStyles}>
