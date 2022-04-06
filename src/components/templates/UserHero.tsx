@@ -12,6 +12,7 @@ import { formatUnixDate } from "@lib/helpers";
 import calendar from "public/icons/calendar.svg";
 import location from "public/icons/location.svg";
 import briefcase from "public/icons/briefcase.svg";
+import Screens from "@app/styles/breakpoints";
 
 const InfoSkeleton: FC = () => {
   const containerStyles = css`
@@ -78,6 +79,50 @@ const UserHero: FC = () => {
     gap: 0.5em;
   `;
 
+  const nameContainerStyles = css`
+    width: 330px;
+    height: 59px;
+    margin-top: 0.5em;
+    margin-bottom: 0.2em;
+    font-size: 3em;
+  `;
+
+  const nameStyles = css`
+    font-size: 3em;
+    font-weight: 800;
+    width: fit-content;
+    margin-top: 0.625em;
+    margin-bottom: 0.2em;
+    text-align: center;
+  `;
+
+  const usernameContainerStyles = css`
+    width: 180px;
+    height: 29px;
+    font-size: 1.5em;
+    font-size: 3em;
+  `;
+
+  const usernameStyles = css`
+    font-size: 1.5em;
+    font-weight: 500;
+    width: fit-content;
+    :hover {
+      text-decoration: underline;
+    }
+  `;
+
+  const infoItemsContainer = css`
+    display: flex;
+    margin-top: 2.25em;
+    gap: 2em;
+    flex-direction: column;
+    align-items: center;
+    @media (min-width: ${Screens.md}px) {
+      flex-direction: row;
+    }
+  `;
+
   return (
     <div css={containerStyles}>
       <div css={wavesStyles}>
@@ -109,56 +154,20 @@ const UserHero: FC = () => {
           <ProfilePicture />
 
           {loading ? (
-            <div
-              css={css`
-                width: 330px;
-                height: 59px;
-                margin-top: 0.5em;
-                margin-bottom: 0.2em;
-                font-size: 3em;
-              `}
-            >
-              <Skeleton width={330} height={59} />
+            <div css={nameContainerStyles}>
+              <Skeleton width="100%" height="100%" />
             </div>
           ) : (
-            <h1
-              css={css`
-                font-size: 3em;
-                font-weight: 800;
-                width: fit-content;
-                margin-top: 0.625em;
-                margin-bottom: 0.2em;
-                text-align: center;
-              `}
-            >
-              {user.displayName}
-            </h1>
+            <h1 css={nameStyles}>{user.displayName}</h1>
           )}
 
           {loading ? (
-            <div
-              css={css`
-                width: 140px;
-                height: 29px;
-                font-size: 1.5em;
-                font-size: 3em;
-              `}
-            >
-              <Skeleton width={180} height={29} />
+            <div css={usernameContainerStyles}>
+              <Skeleton width="100%" height="100%" />
             </div>
           ) : (
             <Link href={`https://github.com/${user.username}`} passHref>
-              <a
-                target="_blank"
-                css={css`
-                  font-size: 1.5em;
-                  font-weight: 500;
-                  width: fit-content;
-                  :hover {
-                    text-decoration: underline;
-                  }
-                `}
-              >
+              <a target="_blank" css={usernameStyles}>
                 <Tippy
                   content="View GitHub profile"
                   delay={200}
@@ -170,13 +179,7 @@ const UserHero: FC = () => {
             </Link>
           )}
 
-          <div
-            css={css`
-              display: flex;
-              margin-top: 2.25em;
-              gap: 2em;
-            `}
-          >
+          <div css={infoItemsContainer}>
             {loading ? (
               <InfoSkeleton />
             ) : (
