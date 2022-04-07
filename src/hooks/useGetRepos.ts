@@ -1,7 +1,7 @@
 import { GitHubApiRepo } from "@app/types/gitHubApi";
 import { setLoadingRepos } from "src/state/slices/loadersSlice";
 import { useEffect, useState } from "react";
-import { useAppSelector, useAppDispatch } from "@app/hooks";
+import { useAppSelector, useAppDispatch, useGetUser } from "@app/hooks";
 import axios from "axios";
 import to from "await-to-ts";
 import { Repo, setRepos } from "src/state/slices/reposSlice";
@@ -11,11 +11,11 @@ import { Repo, setRepos } from "src/state/slices/reposSlice";
  *
  * use throughout the app instead of `useAppSelector((state) => state.repos);` to get repos data
  */
-const useGetRepos = () => {
+const useGetRepos = (username?: string): [Repo[], boolean, Error | null] => {
   const dispatch = useAppDispatch();
 
-  const user = useAppSelector((state) => state.user);
-  const loadingUser = useAppSelector((state) => state.loaders.loadingUser);
+  const [user] = useGetUser();
+
   const loadingRepos = useAppSelector((state) => state.loaders.loadingRepos);
   const repos = useAppSelector((state) => state.repos);
 
@@ -41,13 +41,13 @@ const useGetRepos = () => {
 
       setError(err);
 
-      const mergedRes: GitHubApiRepo[] = res.reduce((prev, curr) => {
+      const mergedRes = res.reduce((prev, curr) => {
         const { data } = curr;
 
         return prev.concat(...data);
-      }, []);
+      }, <GitHubApiRepo[]>[]);
 
-      const repos: Repo[] = mergedRes.map((repo) => {
+      const repos: Repo[] = mergedRes.map((repo: GitHubApiRepo) => {
         return {
           name: repo.name,
           description: repo.description,
@@ -56,6 +56,7 @@ const useGetRepos = () => {
           stars: repo.stargazers_count,
           forks: repo.forks_count,
           size: repo.size,
+          isFork: repo.fork,
         };
       });
 
@@ -63,17 +64,14 @@ const useGetRepos = () => {
       dispatch(setLoadingRepos(false));
     };
 
-    if (
-      !loadingUser &&
-      user.username &&
-      user.amountOfRepos > 0 &&
-      repos.length <= 0
-    ) {
-      getRepos();
-    } else if (!loadingUser && user.username && user.amountOfRepos == 0) {
-      dispatch(setLoadingRepos(false));
+    if (username) {
+      if (user.amountOfRepos > 0) {
+        getRepos();
+      } else {
+        dispatch(setLoadingRepos(false));
+      }
     }
-  }, [user, loadingUser, dispatch, repos]);
+  }, [user, dispatch, username]);
 
   return [repos, loadingRepos, error];
 };

@@ -10,7 +10,7 @@ const Profile: NextPage = () => {
   const { id } = router.query;
 
   const [user, loading] = useGetUser(id?.toString());
-  const [repos, loadingRepos] = useGetRepos();
+  const [repos, loadingRepos] = useGetRepos(user.username);
 
   useEffect(() => {
     !loadingRepos && console.log(repos);
