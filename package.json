@@ -21,6 +21,7 @@
     "axios": "^0.26.0",
     "baby-i-am-faded": "^4.0.10",
     "chart.js": "^3.7.1",
+    "colord": "^2.9.2",
     "date-fns": "^2.28.0",
     "firebase": "^9.6.7",
     "formik": "^2.2.9",
