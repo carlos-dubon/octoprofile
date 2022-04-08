@@ -3,24 +3,43 @@ import { SectionTitle } from "@lib/molecules";
 import { css } from "@emotion/react";
 import { Card } from "@lib/atoms";
 import { useGetRepos } from "@app/hooks";
-import { getMostUsedLanguages } from "src/helpers/getMostUsedLanguages";
-import { Pie } from "react-chartjs-2";
+import { getMostStarredRepos, getMostUsedLanguages } from "@lib/helpers";
+import { Pie, Bar } from "react-chartjs-2";
+
 import {
   Chart as ChartJS,
   ArcElement,
   Tooltip,
   Legend,
   ChartOptions,
+  CategoryScale,
+  LinearScale,
+  BarElement,
 } from "chart.js";
-ChartJS.register(ArcElement, Tooltip, Legend);
+ChartJS.register(
+  ArcElement,
+  Tooltip,
+  Legend,
+  CategoryScale,
+  LinearScale,
+  BarElement
+);
 
 const UsefulCharts: FC = () => {
   const [repos, loading] = useGetRepos();
 
-  const chartOptions: ChartOptions = {
+  const pieChartOptions: ChartOptions = {
     plugins: {
       legend: {
         position: "right",
+      },
+    },
+  };
+
+  const barChartOptions: ChartOptions = {
+    plugins: {
+      legend: {
+        display: false,
       },
     },
   };
@@ -46,11 +65,29 @@ const UsefulCharts: FC = () => {
           subtitle="Charts are a fun way to visualize data!"
         />
 
-        <Card>
-          {!loading && (
-            <Pie data={getMostUsedLanguages(repos)} options={chartOptions} />
-          )}
-        </Card>
+        <div
+          css={css`
+            display: flex;
+            gap: 1em;
+          `}
+        >
+          <Card>
+            {!loading && (
+              <Pie
+                data={getMostUsedLanguages(repos)}
+                options={pieChartOptions}
+              />
+            )}
+          </Card>
+          <Card>
+            {!loading && (
+              <Bar
+                data={getMostStarredRepos(repos)}
+                options={barChartOptions}
+              />
+            )}
+          </Card>
+        </div>
       </div>
     </div>
   );

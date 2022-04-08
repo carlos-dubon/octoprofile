@@ -1,7 +1,6 @@
 import { AppChartData } from "@app/types/chartjs";
 import { Repo } from "src/state/slices/reposSlice";
-import ghLangColors from "gh-lang-colors";
-import { colord } from "colord";
+import { getLanguageColor } from "@lib/helpers";
 
 const getMostUsedLanguages = (repos: Repo[]): AppChartData => {
   const languages = repos.reduce((acc, repo) => {
@@ -17,15 +16,9 @@ const getMostUsedLanguages = (repos: Repo[]): AppChartData => {
 
   const chartData: AppChartData = sortedLanguages.reduce(
     (prev: AppChartData, [language, count]) => {
-      const langColor: string = colord(
-        ghLangColors[language as keyof typeof ghLangColors] || "rgba(0,0,0,0.7)"
-      )
-        .alpha(0.7)
-        .toRgbString();
-
       prev.labels.push(language);
       prev.datasets[0].data.push(count);
-      prev.datasets[0].backgroundColor.push(langColor);
+      prev.datasets[0].backgroundColor.push(getLanguageColor(language, 0.6));
 
       return prev;
     },
