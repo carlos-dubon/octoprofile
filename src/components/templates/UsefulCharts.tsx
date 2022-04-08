@@ -3,8 +3,12 @@ import { SectionTitle } from "@lib/molecules";
 import { css } from "@emotion/react";
 import { Card } from "@lib/atoms";
 import { useGetRepos } from "@app/hooks";
-import { getMostStarredRepos, getMostUsedLanguages } from "@lib/helpers";
-import { Pie, Bar } from "react-chartjs-2";
+import {
+  getMostStarredRepos,
+  getMostUsedLanguages,
+  getStarsPerLanguage,
+} from "@lib/helpers";
+import { Pie, Bar, Doughnut } from "react-chartjs-2";
 
 import {
   Chart as ChartJS,
@@ -84,6 +88,14 @@ const UsefulCharts: FC = () => {
               <Bar
                 data={getMostStarredRepos(repos)}
                 options={barChartOptions}
+              />
+            )}
+          </Card>
+          <Card>
+            {!loading && (
+              <Doughnut
+                data={getStarsPerLanguage(repos)}
+                options={pieChartOptions}
               />
             )}
           </Card>
