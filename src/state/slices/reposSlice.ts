@@ -8,6 +8,7 @@ export interface Repo {
   forks: number;
   size: number;
   url: string;
+  isFork: boolean;
 }
 
 export const emptyRepos = (): Repo[] => [];

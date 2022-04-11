@@ -15,6 +15,13 @@ const Stats: FC = () => {
     transform: translateY(-50%);
     @media (min-width: ${Screens.sm}px) {
       gap: 2em;
+      margin-bottom: -0.5rem;
+    }
+    @media (min-width: ${Screens.md}px) {
+      margin-bottom: -1rem;
+    }
+    @media (min-width: ${Screens.lg}px) {
+      margin-bottom: -2rem;
     }
   `;
 
