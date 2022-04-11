@@ -9,6 +9,7 @@ import {
   getStarsPerLanguage,
 } from "@lib/helpers";
 import { Pie, Bar, Doughnut } from "react-chartjs-2";
+import Screens from "@app/styles/breakpoints";
 
 import {
   Chart as ChartJS,
@@ -55,8 +56,8 @@ const UsefulCharts: FC = () => {
   `;
 
   const cardStyles = css`
-    width: 380px;
-    height: 450px;
+    width: 350px;
+    height: 440px;
     padding: 2em;
     display: flex;
     flex-direction: column;
@@ -64,7 +65,16 @@ const UsefulCharts: FC = () => {
 
   const cardContainerStyles = css`
     display: flex;
-    gap: 1.5em;
+    flex-direction: column;
+    gap: 2em;
+    margin-top: 1.5rem;
+    @media (min-width: ${Screens.lg}px) {
+      flex-direction: row;
+      gap: 1.36em;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-top: 2.5rem;
+    }
   `;
 
   const chartContainerStyles = css`
