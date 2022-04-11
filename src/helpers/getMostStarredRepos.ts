@@ -13,7 +13,7 @@ const colors: string[] = [
 
 const getMostStarredRepos = (repos: Repo[]): AppChartData => {
   const sortedRepos = [...repos]
-    .filter((repo) => !repo.isFork)
+    .filter((repo) => !repo.isFork && repo.stars > 0)
     .sort((a, b) => b.stars - a.stars);
 
   const mostStarredRepos = sortedRepos.slice(0, 5);

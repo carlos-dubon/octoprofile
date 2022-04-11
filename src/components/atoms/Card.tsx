@@ -1,21 +1,24 @@
 import { FC, ReactNode } from "react";
-import { css as cssStyles, SerializedStyles } from "@emotion/react";
+import { css } from "@emotion/react";
 
 interface Props {
   children?: ReactNode;
-  css?: SerializedStyles;
+  className?: string;
 }
 
-const Card: FC<Props> = ({ children, css }) => {
-  const containerStyles = cssStyles`
+const Card: FC<Props> = ({ children, className }) => {
+  const containerStyles = css`
     box-shadow: 0px 10px 20px rgba(41, 41, 42, 0.07);
     border-radius: 8px;
     background-color: #fff;
     padding: 1em;
-    ${css}
   `;
 
-  return <div css={containerStyles}>{children}</div>;
+  return (
+    <div css={containerStyles} className={className}>
+      {children}
+    </div>
+  );
 };
 
 export { Card };

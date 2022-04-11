@@ -12,6 +12,7 @@ const getStarsPerLanguage = (repos: Repo[]): AppChartData => {
 
   const sortedLanguages = Object.entries(languages)
     .sort((a, b) => b[1] - a[1])
+    .filter((language) => language[1] > 0)
     .slice(0, 10);
 
   const chartData: AppChartData = sortedLanguages.reduce(

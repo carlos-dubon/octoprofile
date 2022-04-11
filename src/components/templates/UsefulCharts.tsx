@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { SectionTitle } from "@lib/molecules";
+import { SectionTitle, ChartTitle } from "@lib/molecules";
 import { css } from "@emotion/react";
 import { Card } from "@lib/atoms";
 import { useGetRepos } from "@app/hooks";
@@ -54,6 +54,27 @@ const UsefulCharts: FC = () => {
     align-items: center;
   `;
 
+  const cardStyles = css`
+    width: 380px;
+    height: 450px;
+    padding: 2em;
+    display: flex;
+    flex-direction: column;
+  `;
+
+  const cardContainerStyles = css`
+    display: flex;
+    gap: 1.5em;
+  `;
+
+  const chartContainerStyles = css`
+    display: flex;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+  `;
+
   return (
     <div css={containerStyles}>
       <div
@@ -69,34 +90,47 @@ const UsefulCharts: FC = () => {
           subtitle="Charts are a fun way to visualize data!"
         />
 
-        <div
-          css={css`
-            display: flex;
-            gap: 1em;
-          `}
-        >
-          <Card>
+        <div css={cardContainerStyles}>
+          <Card css={cardStyles}>
+            <ChartTitle
+              title="Top Languages"
+              subtitle="Your most used languages"
+            />
             {!loading && (
-              <Pie
-                data={getMostUsedLanguages(repos)}
-                options={pieChartOptions}
-              />
+              <div css={chartContainerStyles}>
+                <Pie
+                  data={getMostUsedLanguages(repos)}
+                  options={pieChartOptions}
+                />
+              </div>
             )}
           </Card>
-          <Card>
+          <Card css={cardStyles}>
+            <ChartTitle
+              title="Most starred"
+              subtitle="Your most starred repositories"
+            />
             {!loading && (
-              <Bar
-                data={getMostStarredRepos(repos)}
-                options={barChartOptions}
-              />
+              <div css={chartContainerStyles}>
+                <Bar
+                  data={getMostStarredRepos(repos)}
+                  options={barChartOptions}
+                />
+              </div>
             )}
           </Card>
-          <Card>
+          <Card css={cardStyles}>
+            <ChartTitle
+              title="Stars per Language"
+              subtitle="Number of stars per language"
+            />
             {!loading && (
-              <Doughnut
-                data={getStarsPerLanguage(repos)}
-                options={pieChartOptions}
-              />
+              <div css={chartContainerStyles}>
+                <Doughnut
+                  data={getStarsPerLanguage(repos)}
+                  options={pieChartOptions}
+                />
+              </div>
             )}
           </Card>
         </div>
