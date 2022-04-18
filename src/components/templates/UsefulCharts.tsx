@@ -1,7 +1,7 @@
 import { FC } from "react";
 import { SectionTitle, ChartTitle } from "@lib/molecules";
 import { css } from "@emotion/react";
-import { Card } from "@lib/atoms";
+import { Card, Loader } from "@lib/atoms";
 import { useGetRepos } from "@app/hooks";
 import {
   getMostStarredRepos,
@@ -10,6 +10,8 @@ import {
 } from "@lib/helpers";
 import { Pie, Bar, Doughnut } from "react-chartjs-2";
 import Screens from "@app/styles/breakpoints";
+import circleBg from "public/chartsCircle.svg";
+import Image from "next/image";
 
 import {
   Chart as ChartJS,
@@ -39,6 +41,7 @@ const UsefulCharts: FC = () => {
         position: "right",
       },
     },
+    aspectRatio: 1,
   };
 
   const barChartOptions: ChartOptions = {
@@ -47,6 +50,7 @@ const UsefulCharts: FC = () => {
         display: false,
       },
     },
+    aspectRatio: 1.2,
   };
 
   const containerStyles = css`
@@ -64,16 +68,18 @@ const UsefulCharts: FC = () => {
   `;
 
   const cardContainerStyles = css`
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
     gap: 2em;
     margin-top: 1.5rem;
-    @media (min-width: ${Screens.lg}px) {
-      flex-direction: row;
-      gap: 1.36em;
-      flex-wrap: wrap;
-      justify-content: center;
+    @media (min-width: ${Screens.md}px) {
+      gap: 2em;
       margin-top: 2.5rem;
+      grid-template-columns: repeat(2, 1fr);
+    }
+    @media (min-width: ${Screens.xl}px) {
+      gap: 1.36em;
+      grid-template-columns: repeat(3, 1fr);
     }
   `;
 
@@ -83,6 +89,14 @@ const UsefulCharts: FC = () => {
     height: 100%;
     justify-content: center;
     align-items: center;
+  `;
+
+  const circleBgStyles = css`
+    position: absolute;
+    width: 540px;
+    height: 540px;
+    z-index: -2;
+    transform: translateX(75%) translateY(-5%);
   `;
 
   return (
@@ -95,6 +109,10 @@ const UsefulCharts: FC = () => {
           align-items: center;
         `}
       >
+        <div css={circleBgStyles}>
+          <Image src={circleBg} alt="Charts circle bg" layout="fill" priority />
+        </div>
+
         <SectionTitle
           title="Some useful charts"
           subtitle="Charts are a fun way to visualize data!"
@@ -106,42 +124,49 @@ const UsefulCharts: FC = () => {
               title="Top Languages"
               subtitle="Your most used languages"
             />
-            {!loading && (
-              <div css={chartContainerStyles}>
+            <div css={chartContainerStyles}>
+              {loading ? (
+                <Loader />
+              ) : (
                 <Pie
                   data={getMostUsedLanguages(repos)}
                   options={pieChartOptions}
                 />
-              </div>
-            )}
+              )}
+            </div>
           </Card>
           <Card css={cardStyles}>
             <ChartTitle
               title="Most starred"
               subtitle="Your most starred repositories"
             />
-            {!loading && (
-              <div css={chartContainerStyles}>
+
+            <div css={chartContainerStyles}>
+              {loading ? (
+                <Loader />
+              ) : (
                 <Bar
                   data={getMostStarredRepos(repos)}
                   options={barChartOptions}
                 />
-              </div>
-            )}
+              )}
+            </div>
           </Card>
           <Card css={cardStyles}>
             <ChartTitle
               title="Stars per Language"
               subtitle="Number of stars per language"
             />
-            {!loading && (
-              <div css={chartContainerStyles}>
+            <div css={chartContainerStyles}>
+              {loading ? (
+                <Loader />
+              ) : (
                 <Doughnut
                   data={getStarsPerLanguage(repos)}
                   options={pieChartOptions}
                 />
-              </div>
-            )}
+              )}
+            </div>
           </Card>
         </div>
       </div>
