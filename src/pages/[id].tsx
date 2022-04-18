@@ -1,7 +1,7 @@
 import type { NextPage } from "next";
 import Head from "next/head";
 import { useRouter, NextRouter } from "next/router";
-import { UserHero, Stats, UsefulCharts } from "@lib/templates";
+import { UserHero, Stats, UsefulCharts, BrowseTheRepos } from "@lib/templates";
 import { useGetRepos, useGetUser } from "@app/hooks";
 const Profile: NextPage = () => {
   const router: NextRouter = useRouter();
@@ -24,6 +24,7 @@ const Profile: NextPage = () => {
       <UserHero />
       <Stats />
       <UsefulCharts />
+      <BrowseTheRepos />
     </div>
   );
 };

@@ -151,7 +151,9 @@ const Input: FC<Props> = ({
         onClick={() => {
           !children && inputRef.current?.focus();
         }}
-      ></div>
+      >
+        {children}
+      </div>
     </div>
   );
 };
