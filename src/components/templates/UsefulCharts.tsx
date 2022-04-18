@@ -1,7 +1,7 @@
 import { FC } from "react";
 import { SectionTitle, ChartTitle } from "@lib/molecules";
 import { css } from "@emotion/react";
-import { Card } from "@lib/atoms";
+import { Card, Loader } from "@lib/atoms";
 import { useGetRepos } from "@app/hooks";
 import {
   getMostStarredRepos,
@@ -124,42 +124,49 @@ const UsefulCharts: FC = () => {
               title="Top Languages"
               subtitle="Your most used languages"
             />
-            {!loading && (
-              <div css={chartContainerStyles}>
+            <div css={chartContainerStyles}>
+              {loading ? (
+                <Loader />
+              ) : (
                 <Pie
                   data={getMostUsedLanguages(repos)}
                   options={pieChartOptions}
                 />
-              </div>
-            )}
+              )}
+            </div>
           </Card>
           <Card css={cardStyles}>
             <ChartTitle
               title="Most starred"
               subtitle="Your most starred repositories"
             />
-            {!loading && (
-              <div css={chartContainerStyles}>
+
+            <div css={chartContainerStyles}>
+              {loading ? (
+                <Loader />
+              ) : (
                 <Bar
                   data={getMostStarredRepos(repos)}
                   options={barChartOptions}
                 />
-              </div>
-            )}
+              )}
+            </div>
           </Card>
           <Card css={cardStyles}>
             <ChartTitle
               title="Stars per Language"
               subtitle="Number of stars per language"
             />
-            {!loading && (
-              <div css={chartContainerStyles}>
+            <div css={chartContainerStyles}>
+              {loading ? (
+                <Loader />
+              ) : (
                 <Doughnut
                   data={getStarsPerLanguage(repos)}
                   options={pieChartOptions}
                 />
-              </div>
-            )}
+              )}
+            </div>
           </Card>
         </div>
       </div>
