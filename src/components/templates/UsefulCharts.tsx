@@ -96,7 +96,10 @@ const UsefulCharts: FC = () => {
     width: 540px;
     height: 540px;
     z-index: -2;
-    transform: translateX(75%) translateY(-5%);
+    transform: translateX(60%) translateY(-5%);
+    @media (min-width: ${Screens.sm}px) {
+      transform: translateX(75%) translateY(-5%);
+    }
   `;
 
   return (

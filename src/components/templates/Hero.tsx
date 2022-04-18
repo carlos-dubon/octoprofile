@@ -183,7 +183,9 @@ const Hero: FC = () => {
               `}
             >
               <Image
-                unoptimized
+                css={css`
+                  image-rendering: -webkit-optimize-contrast;
+                `}
                 src={appPreview}
                 placeholder="blur"
                 alt="App Preview"
