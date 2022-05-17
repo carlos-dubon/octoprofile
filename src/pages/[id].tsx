@@ -25,6 +25,7 @@ const Profile: NextPage = () => {
       <Stats />
       <UsefulCharts />
       <BrowseTheRepos />
+      <div style={{ height: 1000 }}></div>
     </div>
   );
 };

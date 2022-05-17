@@ -1,7 +1,7 @@
 import { FC } from "react";
 import { css } from "@emotion/react";
 import Colors from "@app/styles/colors";
-import { SectionTitle } from "@lib/molecules";
+import { Dropdown, SectionTitle } from "@lib/molecules";
 import { Input } from "@lib/atoms";
 
 const BrowseTheRepos: FC = () => {
@@ -28,7 +28,15 @@ const BrowseTheRepos: FC = () => {
           title="Browse the repos"
           subtitle="Sort through the repos by name, number of stars, forks, and size."
         />
-        <Input placeholder="The name of the repository">Menu</Input>
+        <Input placeholder="The name of the repository">
+          <Dropdown
+            defaultValue="Stars"
+            values={["Stars", "Forks", "Size"]}
+            onChange={(e) => {
+              console.log(e);
+            }}
+          />
+        </Input>
       </div>
     </div>
   );
