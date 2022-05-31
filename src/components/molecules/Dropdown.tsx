@@ -1,8 +1,9 @@
-import { FC, useState } from "react";
+import { FC, RefObject, useRef, useState } from "react";
 import { css } from "@emotion/react";
 import Image from "next/image";
 import Chevron from "/public/chevron.svg";
 import Colors from "@app/styles/colors";
+import { useClickOutside } from "@app/hooks";
 
 interface Props {
   defaultValue: string;
@@ -76,8 +77,14 @@ const Dropdown: FC<Props> = ({ defaultValue, values, onChange }) => {
     setIsOpen(false);
   };
 
+  const el: RefObject<HTMLDivElement> = useRef<HTMLDivElement>(null);
+
+  useClickOutside(el, () => {
+    setIsOpen(false);
+  });
+
   return (
-    <div css={containerStyles}>
+    <div css={containerStyles} ref={el}>
       <div css={buttonStyles} onClick={() => setIsOpen(!isOpen)}>
         <div css={buttonTextStyles}>{value}</div>
         <Image
