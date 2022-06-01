@@ -2,5 +2,12 @@ import { useAppDispatch } from "./useAppDispatch";
 import { useAppSelector } from "./useAppSelector";
 import { useGetUser } from "./useGetUser";
 import { useGetRepos } from "./useGetRepos";
+import { useClickOutside } from "./useClickOutside";
 
-export { useAppDispatch, useAppSelector, useGetUser, useGetRepos };
+export {
+  useAppDispatch,
+  useAppSelector,
+  useGetUser,
+  useGetRepos,
+  useClickOutside,
+};

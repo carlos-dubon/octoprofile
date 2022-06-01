@@ -68,6 +68,9 @@ const Input: FC<Props> = ({
     ::placeholder {
       color: ${Colors.gray700};
     }
+    :placeholder-shown {
+      text-overflow: ellipsis;
+    }
   `;
 
   const clearBtnContainerStyles = css`
@@ -151,7 +154,9 @@ const Input: FC<Props> = ({
         onClick={() => {
           !children && inputRef.current?.focus();
         }}
-      ></div>
+      >
+        {children}
+      </div>
     </div>
   );
 };
