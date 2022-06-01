@@ -43,6 +43,20 @@ const BrowseTheRepos: FC = () => {
     }
   `;
 
+  const dropdownContainerStyles = css`
+    display: flex;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+  `;
+
+  const separatorStyles = css`
+    width: 3px;
+    height: 55%;
+    margin-right: 22px;
+    background-color: ${Colors.gray200};
+  `;
+
   useEffect(() => {
     console.log(searchInput.values.search);
   }, [searchInput.values.search]);
@@ -62,13 +76,16 @@ const BrowseTheRepos: FC = () => {
           clearFn={searchInput.resetForm}
           onBlur={searchInput.handleBlur}
         >
-          <Dropdown
-            defaultValue="Stars"
-            values={["Stars", "Forks", "Size"]}
-            onChange={(e) => {
-              console.log(e);
-            }}
-          />
+          <div css={dropdownContainerStyles}>
+            <div css={separatorStyles} />
+            <Dropdown
+              defaultValue="Stars"
+              values={["Stars", "Forks", "Size"]}
+              onChange={(e) => {
+                console.log(e);
+              }}
+            />
+          </div>
         </Input>
       </div>
       <div css={circlePatternStyles}>
