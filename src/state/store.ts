@@ -2,12 +2,14 @@ import { configureStore } from "@reduxjs/toolkit";
 import userReducer from "./slices/userSlice";
 import loadersReducer from "./slices/loadersSlice";
 import reposReducer from "./slices/reposSlice";
+import searchReducer from "./slices/searchSlice";
 
 const store = configureStore({
   reducer: {
     user: userReducer,
     loaders: loadersReducer,
     repos: reposReducer,
+    search: searchReducer,
   },
 });
 
