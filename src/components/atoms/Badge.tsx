@@ -4,9 +4,10 @@ import Colors from "@app/styles/colors";
 
 interface Props {
   children: ReactNode;
+  className?: string;
 }
 
-const Badge: FC<Props> = ({ children }) => {
+const Badge: FC<Props> = ({ children, className }) => {
   const containerStyles = css`
     height: 27px;
     background-color: ${Colors.gray100};
@@ -15,11 +16,15 @@ const Badge: FC<Props> = ({ children }) => {
     align-items: center;
     justify-items: center;
     gap: 0.4em;
-    padding-left: 0.8em;
-    padding-right: 0.8em;
+    padding-left: 0.6em;
+    padding-right: 0.6em;
   `;
 
-  return <div css={containerStyles}>{children}</div>;
+  return (
+    <div className={className} css={containerStyles}>
+      {children}
+    </div>
+  );
 };
 
 export { Badge };

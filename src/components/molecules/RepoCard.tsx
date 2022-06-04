@@ -6,6 +6,7 @@ import { Badge } from "@lib/atoms";
 import GhColors from "gh-lang-colors";
 import { commaSeparateThousands, truncateString } from "@lib/helpers";
 import Image from "next/image";
+import Link from "next/link";
 
 const RepoCard: FC<Repo> = ({
   name,
@@ -14,6 +15,7 @@ const RepoCard: FC<Repo> = ({
   stars,
   forks,
   size,
+  url,
 }) => {
   const langColor: string = language
     ? GhColors[language as keyof typeof GhColors]
@@ -27,7 +29,10 @@ const RepoCard: FC<Repo> = ({
     box-shadow: 0px 10px 20px rgba(41, 41, 42, 0.07);
     border-radius: 8px;
     background-color: #ffffff;
-    padding: 1.5rem;
+    padding: 1.325rem;
+    &:hover {
+      cursor: pointer;
+    }
   `;
 
   const titleStyles = css`
@@ -75,41 +80,43 @@ const RepoCard: FC<Repo> = ({
   `;
 
   return (
-    <div css={containerStyles}>
-      <p css={titleStyles}>{name}</p>
-      <p css={descriptionStyles}>{truncateString(description || "", 100)}</p>
-      <div css={badgeContainerStyles}>
-        {language && (
+    <Link href={url} passHref>
+      <a target="_blank" css={containerStyles}>
+        <p css={titleStyles}>{name}</p>
+        <p css={descriptionStyles}>{truncateString(description || "", 100)}</p>
+        <div css={badgeContainerStyles}>
+          {language && (
+            <Badge>
+              <div css={languageColorStyles}></div>
+              <p css={badgeTextStyles}>{language}</p>
+            </Badge>
+          )}
           <Badge>
-            <div css={languageColorStyles}></div>
-            <p css={badgeTextStyles}>{language}</p>
+            <Image
+              src="/repoStar.svg"
+              alt="star"
+              width={13}
+              height={12}
+              layout="fixed"
+            />
+            <p css={badgeTextStyles}>{commaSeparateThousands(stars)}</p>
           </Badge>
-        )}
-        <Badge>
-          <Image
-            src="/repoStar.svg"
-            alt="star"
-            width={13}
-            height={12}
-            layout="fixed"
-          />
-          <p css={badgeTextStyles}>{commaSeparateThousands(stars)}</p>
-        </Badge>
-        <Badge>
-          <Image
-            src="/repoFork.svg"
-            alt="fork"
-            width={8}
-            height={12}
-            layout="fixed"
-          />
-          <p css={badgeTextStyles}>{commaSeparateThousands(forks)}</p>
-        </Badge>
-        <Badge>
-          <p css={badgeTextStyles}>{commaSeparateThousands(size)} KB</p>
-        </Badge>
-      </div>
-    </div>
+          <Badge>
+            <Image
+              src="/repoFork.svg"
+              alt="fork"
+              width={8}
+              height={12}
+              layout="fixed"
+            />
+            <p css={badgeTextStyles}>{commaSeparateThousands(forks)}</p>
+          </Badge>
+          <Badge className="badge">
+            <p css={badgeTextStyles}>{commaSeparateThousands(size)} KB</p>
+          </Badge>
+        </div>
+      </a>
+    </Link>
   );
 };
 
