@@ -5,6 +5,7 @@ import { Stat } from "./Stat";
 import { ChartTitle } from "./ChartTitle";
 import { Dropdown } from "./Dropdown";
 import { RepoCard } from "./RepoCard";
+import { Pagination } from "./Pagination";
 
 export {
   SectionTitle,
@@ -14,4 +15,5 @@ export {
   ChartTitle,
   Dropdown,
   RepoCard,
+  Pagination,
 };
