@@ -5,6 +5,7 @@ import { Repo } from "src/state/slices/reposSlice";
 import { Badge } from "@lib/atoms";
 import GhColors from "gh-lang-colors";
 import { commaSeparateThousands } from "@lib/helpers";
+import Image from "next/image";
 
 const RepoCard: FC<Repo> = ({
   name,
@@ -75,9 +76,23 @@ const RepoCard: FC<Repo> = ({
           </Badge>
         )}
         <Badge>
+          <Image
+            src="/repoStar.svg"
+            alt="star"
+            width={13}
+            height={12}
+            layout="fixed"
+          />
           <p css={badgeTextStyles}>{commaSeparateThousands(stars)}</p>
         </Badge>
         <Badge>
+          <Image
+            src="/repoFork.svg"
+            alt="fork"
+            width={8}
+            height={12}
+            layout="fixed"
+          />
           <p css={badgeTextStyles}>{commaSeparateThousands(forks)}</p>
         </Badge>
         <Badge>
