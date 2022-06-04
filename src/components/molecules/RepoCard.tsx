@@ -30,8 +30,10 @@ const RepoCard: FC<Repo> = ({
     border-radius: 8px;
     background-color: #ffffff;
     padding: 1.325rem;
+    transition: all 0.2s ease-in-out;
     &:hover {
       cursor: pointer;
+      box-shadow: 0px 10px 20px rgba(41, 41, 42, 0);
     }
   `;
 
@@ -64,7 +66,7 @@ const RepoCard: FC<Repo> = ({
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    max-width: 12ch;
+    max-width: 9ch;
   `;
 
   const languageColorStyles = css`
@@ -98,6 +100,7 @@ const RepoCard: FC<Repo> = ({
               width={13}
               height={12}
               layout="fixed"
+              priority
             />
             <p css={badgeTextStyles}>{commaSeparateThousands(stars)}</p>
           </Badge>
@@ -108,6 +111,7 @@ const RepoCard: FC<Repo> = ({
               width={8}
               height={12}
               layout="fixed"
+              priority
             />
             <p css={badgeTextStyles}>{commaSeparateThousands(forks)}</p>
           </Badge>
