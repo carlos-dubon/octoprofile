@@ -5,6 +5,7 @@ import { Button } from "./Button";
 import { TranslucentIcon } from "./TranslucentIcon";
 import { Card } from "./Card";
 import { Loader } from "./Loader";
+import { Badge } from "./Badge";
 
 export {
   TranslucentNavLink,
@@ -14,4 +15,5 @@ export {
   TranslucentIcon,
   Card,
   Loader,
+  Badge,
 };

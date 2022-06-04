@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-export type SortBy = "Stars" | "Forks" | "Name";
+export type SortBy = "Stars" | "Forks" | "Size";
 
 export interface Search {
   query: string;

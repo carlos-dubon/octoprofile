@@ -4,6 +4,7 @@ import { UserHero } from "./UserHero";
 import { Stats } from "./Stats";
 import { UsefulCharts } from "./UsefulCharts";
 import { BrowseTheRepos } from "./BrowseTheRepos";
+import { Repos } from "./Repos";
 
 export {
   Hero,
@@ -12,4 +13,5 @@ export {
   Stats,
   UsefulCharts,
   BrowseTheRepos,
+  Repos,
 };

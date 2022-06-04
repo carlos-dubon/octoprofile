@@ -1,0 +1,91 @@
+import { FC } from "react";
+import { css } from "@emotion/react";
+import Colors from "@app/styles/colors";
+import { Repo } from "src/state/slices/reposSlice";
+import { Badge } from "@lib/atoms";
+import GhColors from "gh-lang-colors";
+import { commaSeparateThousands } from "@lib/helpers";
+
+const RepoCard: FC<Repo> = ({
+  name,
+  description,
+  language,
+  stars,
+  forks,
+  size,
+}) => {
+  const langColor: string = language
+    ? GhColors[language as keyof typeof GhColors]
+    : Colors.gray700;
+
+  const containerStyles = css`
+    width: 100%;
+    height: 12.813rem;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0px 10px 20px rgba(41, 41, 42, 0.07);
+    border-radius: 8px;
+    background-color: #ffffff;
+    padding: 1.5rem;
+  `;
+
+  const titleStyles = css`
+    margin: 0;
+    font-weight: 600;
+    font-size: 1.25em;
+    color: ${Colors.gray900};
+  `;
+
+  const descriptionStyles = css`
+    font-weight: 400;
+    font-size: 1em;
+    line-height: 162%;
+    color: ${Colors.gray900};
+    margin: 0;
+  `;
+
+  const badgeTextStyles = css`
+    margin: 0;
+    font-weight: 400;
+    font-size: 0.75em;
+    color: #000000;
+  `;
+
+  const languageColorStyles = css`
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: ${langColor};
+  `;
+
+  const badgeContainerStyles = css`
+    display: flex;
+    gap: 0.5em;
+  `;
+
+  return (
+    <div css={containerStyles}>
+      <p css={titleStyles}>{name}</p>
+      <p css={descriptionStyles}>{description}</p>
+      <div css={badgeContainerStyles}>
+        {language && (
+          <Badge>
+            <div css={languageColorStyles}></div>
+            <p css={badgeTextStyles}>{language}</p>
+          </Badge>
+        )}
+        <Badge>
+          <p css={badgeTextStyles}>{commaSeparateThousands(stars)}</p>
+        </Badge>
+        <Badge>
+          <p css={badgeTextStyles}>{commaSeparateThousands(forks)}</p>
+        </Badge>
+        <Badge>
+          <p css={badgeTextStyles}>{commaSeparateThousands(size)} KB</p>
+        </Badge>
+      </div>
+    </div>
+  );
+};
+
+export { RepoCard };
