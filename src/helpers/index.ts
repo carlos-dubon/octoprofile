@@ -5,6 +5,7 @@ import { getMostUsedLanguages } from "./getMostUsedLanguages";
 import { getMostStarredRepos } from "./getMostStarredRepos";
 import { getStarsPerLanguage } from "./getStarsPerLanguage";
 import { commaSeparateThousands } from "./commaSeparateThousands";
+import { truncateString } from "./truncateString";
 
 export {
   formatUnixDate,
@@ -14,4 +15,5 @@ export {
   getMostStarredRepos,
   getStarsPerLanguage,
   commaSeparateThousands,
+  truncateString,
 };

@@ -4,7 +4,7 @@ import Colors from "@app/styles/colors";
 import { Repo } from "src/state/slices/reposSlice";
 import { Badge } from "@lib/atoms";
 import GhColors from "gh-lang-colors";
-import { commaSeparateThousands } from "@lib/helpers";
+import { commaSeparateThousands, truncateString } from "@lib/helpers";
 import Image from "next/image";
 
 const RepoCard: FC<Repo> = ({
@@ -35,6 +35,11 @@ const RepoCard: FC<Repo> = ({
     font-weight: 600;
     font-size: 1.25em;
     color: ${Colors.gray900};
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 20ch;
+    margin-bottom: 0.4em;
   `;
 
   const descriptionStyles = css`
@@ -43,6 +48,7 @@ const RepoCard: FC<Repo> = ({
     line-height: 162%;
     color: ${Colors.gray900};
     margin: 0;
+    flex: 1;
   `;
 
   const badgeTextStyles = css`
@@ -50,6 +56,10 @@ const RepoCard: FC<Repo> = ({
     font-weight: 400;
     font-size: 0.75em;
     color: #000000;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 12ch;
   `;
 
   const languageColorStyles = css`
@@ -67,7 +77,7 @@ const RepoCard: FC<Repo> = ({
   return (
     <div css={containerStyles}>
       <p css={titleStyles}>{name}</p>
-      <p css={descriptionStyles}>{description}</p>
+      <p css={descriptionStyles}>{truncateString(description || "", 100)}</p>
       <div css={badgeContainerStyles}>
         {language && (
           <Badge>
