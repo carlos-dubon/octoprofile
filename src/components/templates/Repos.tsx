@@ -42,12 +42,10 @@ const Repos: FC = () => {
               {pages[activePage].map((repo, index) => {
                 return <RepoCard key={index} {...repo} />;
               })}
+
               <Pagination
-                activePage={activePage}
                 setActivePage={setActivePage}
-                itemsCountPerPage={6}
-                totalItemsCount={repos.length}
-                pageRangeDisplayed={5}
+                pageCount={pages.length}
               />
             </>
           ) : (
