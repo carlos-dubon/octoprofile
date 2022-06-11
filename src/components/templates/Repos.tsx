@@ -1,4 +1,4 @@
-import { useGetRepos } from "@app/hooks";
+import { useAppSelector, useGetRepos } from "@app/hooks";
 import { FC, useEffect, useState } from "react";
 import { css } from "@emotion/react";
 import { RepoCard } from "../molecules/RepoCard";
@@ -6,8 +6,12 @@ import { chunks } from "@lib/helpers";
 import { Repo } from "src/state/slices/reposSlice";
 import { Pagination } from "@lib/molecules";
 import Screens from "@app/styles/breakpoints";
+import { SortBy } from "src/state/slices/searchSlice";
 
 const Repos: FC = () => {
+  const query: string = useAppSelector((state) => state.search.query);
+  const sort: SortBy = useAppSelector((state) => state.search.sort);
+
   const [repos, loading] = useGetRepos();
   const [pages, setPages] = useState<Repo[][] | null>(null);
   const [activePage, setActivePage] = useState<number>(0);
@@ -34,10 +38,26 @@ const Repos: FC = () => {
 
   useEffect(() => {
     if (!loading && repos.length > 0) {
-      const pages: IterableIterator<Repo[]> = chunks<Repo>(repos, 6);
+      let repositories: Repo[] = [];
+
+      if (sort == "Stars") {
+        repositories = [...repos].sort((a, b) => b.stars - a.stars);
+      } else if (sort == "Forks") {
+        repositories = [...repos].sort((a, b) => b.forks - a.forks);
+      } else if (sort == "Size") {
+        repositories = [...repos].sort((a, b) => b.size - a.size);
+      }
+
+      if (query.trim().length > 0) {
+        repositories = repositories.filter((repo: Repo) =>
+          repo.name.toLowerCase().includes(query.toLowerCase())
+        );
+      }
+
+      const pages: IterableIterator<Repo[]> = chunks<Repo>(repositories, 6);
       setPages([...pages]);
     }
-  }, [repos, loading]);
+  }, [repos, loading, sort, query]);
 
   return (
     <div css={containerStyles}>

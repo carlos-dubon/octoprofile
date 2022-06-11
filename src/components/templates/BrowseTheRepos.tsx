@@ -6,8 +6,12 @@ import { Dropdown, SectionTitle } from "@lib/molecules";
 import { Input } from "@lib/atoms";
 import { useFormik } from "formik";
 import Image from "next/image";
+import { useAppDispatch } from "@app/hooks";
+import { setQuery, setSort, SortBy } from "src/state/slices/searchSlice";
 
 const BrowseTheRepos: FC = () => {
+  const dispatch = useAppDispatch();
+
   const searchInput = useFormik({
     initialValues: {
       search: "",
@@ -58,8 +62,8 @@ const BrowseTheRepos: FC = () => {
   `;
 
   useEffect(() => {
-    console.log(searchInput.values.search);
-  }, [searchInput.values.search]);
+    dispatch(setQuery(searchInput.values.search));
+  }, [dispatch, searchInput.values.search]);
 
   return (
     <div css={containerStyles}>
@@ -81,8 +85,8 @@ const BrowseTheRepos: FC = () => {
             <Dropdown
               defaultValue="Stars"
               values={["Stars", "Forks", "Size"]}
-              onChange={(e) => {
-                console.log(e);
+              onChange={(value) => {
+                dispatch(setSort(value as SortBy));
               }}
             />
           </div>
