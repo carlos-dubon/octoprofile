@@ -38,14 +38,15 @@ const Repos: FC = () => {
 
   useEffect(() => {
     if (!loading && repos.length > 0) {
+      const fetchedRepos: Repo[] = [...repos];
       let repositories: Repo[] = [];
 
       if (sort == "Stars") {
-        repositories = [...repos].sort((a, b) => b.stars - a.stars);
+        repositories = fetchedRepos.sort((a, b) => b.stars - a.stars);
       } else if (sort == "Forks") {
-        repositories = [...repos].sort((a, b) => b.forks - a.forks);
+        repositories = fetchedRepos.sort((a, b) => b.forks - a.forks);
       } else if (sort == "Size") {
-        repositories = [...repos].sort((a, b) => b.size - a.size);
+        repositories = fetchedRepos.sort((a, b) => b.size - a.size);
       }
 
       if (query.trim().length > 0) {
