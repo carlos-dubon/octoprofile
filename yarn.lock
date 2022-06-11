@@ -1542,10 +1542,10 @@ get-symbol-description@^1.0.0:
     call-bind "^1.0.2"
     get-intrinsic "^1.1.1"
 
-gh-lang-colors@^0.0.19:
-  version "0.0.19"
-  resolved "https://registry.yarnpkg.com/gh-lang-colors/-/gh-lang-colors-0.0.19.tgz#3e5a6d698dea50805392f0817fb9085f96513734"
-  integrity sha512-ZC92ewwaItct9JVBrIQ1Z/mfoBMSZMrOmFnkGCxraV3Dl2dvH9aE+sLcuaoc6N24RkCw0EonmOh9XsCqWwwW/g==
+gh-lang-colors@^0.0.25:
+  version "0.0.25"
+  resolved "https://registry.yarnpkg.com/gh-lang-colors/-/gh-lang-colors-0.0.25.tgz#96a3404a3c096581cac7c659e841b58e6b61634a"
+  integrity sha512-iUp4Oy9zg4/Vekh+4uRl1HUvCBnAEBrjfO3IA6gcstaIZqJzJsxlNXHY4k0Z8is8ToV2sFCLDvNPVavpAaEeRg==
 
 glob-parent@^5.1.2:
   version "5.1.2"
