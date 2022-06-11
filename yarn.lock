@@ -2679,6 +2679,11 @@ uri-js@^4.2.2:
   dependencies:
     punycode "^2.1.0"
 
+use-breakpoint@^3.0.3:
+  version "3.0.3"
+  resolved "https://registry.yarnpkg.com/use-breakpoint/-/use-breakpoint-3.0.3.tgz#2d7760058d06f56f93aaff1c8fcdd864991b940a"
+  integrity sha512-p73F+NZjWNZM34mZwR7iC+he1qoejtWJt5F0+6+fEfxUgOxDaf6A5QmlwY/TgzUY2YvIObN1Hj4DbHZbORmgwQ==
+
 use-subscription@1.5.1:
   version "1.5.1"
   resolved "https://registry.npmjs.org/use-subscription/-/use-subscription-1.5.1.tgz"

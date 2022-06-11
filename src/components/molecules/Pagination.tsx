@@ -3,12 +3,15 @@ import ReactPaginate from "react-paginate";
 import { Global, css } from "@emotion/react";
 import Colors from "@app/styles/colors";
 import { GoToPage } from "@lib/atoms";
+import useBreakpoint from "use-breakpoint";
 
 interface Props {
   activePage: number;
   setActivePage: Dispatch<SetStateAction<number>>;
   pageCount: number;
 }
+
+const breakpoints = { mobile: 0, sm: 640, md: 768 };
 
 const Pagination: FC<Props> = ({ activePage, setActivePage, pageCount }) => {
   const globalStyles = css`
@@ -70,6 +73,8 @@ const Pagination: FC<Props> = ({ activePage, setActivePage, pageCount }) => {
     setActivePage(0);
   };
 
+  const { breakpoint } = useBreakpoint(breakpoints, "md");
+
   return (
     <>
       <Global styles={globalStyles} />
@@ -82,7 +87,7 @@ const Pagination: FC<Props> = ({ activePage, setActivePage, pageCount }) => {
         <ReactPaginate
           forcePage={activePage}
           onPageChange={handleChange}
-          pageRangeDisplayed={4}
+          pageRangeDisplayed={breakpoint == "mobile" ? 2 : 4}
           marginPagesDisplayed={0}
           breakLabel=""
           pageCount={pageCount}
