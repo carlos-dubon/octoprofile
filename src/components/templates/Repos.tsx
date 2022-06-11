@@ -5,6 +5,7 @@ import { RepoCard } from "../molecules/RepoCard";
 import { chunks } from "@lib/helpers";
 import { Repo } from "src/state/slices/reposSlice";
 import { Pagination } from "@lib/molecules";
+import Screens from "@app/styles/breakpoints";
 
 const Repos: FC = () => {
   const [repos, loading] = useGetRepos();
@@ -20,7 +21,14 @@ const Repos: FC = () => {
   const cardContainerStyles = css`
     display: grid;
     justify-content: center;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    place-items: center;
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+    @media (min-width: ${Screens.md}px) {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+    @media (min-width: ${Screens.xl}px) {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
     gap: 1.75em;
   `;
 
