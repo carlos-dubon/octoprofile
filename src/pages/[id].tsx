@@ -1,8 +1,15 @@
 import type { NextPage } from "next";
 import Head from "next/head";
 import { useRouter, NextRouter } from "next/router";
-import { UserHero, Stats, UsefulCharts, BrowseTheRepos } from "@lib/templates";
+import {
+  UserHero,
+  Stats,
+  UsefulCharts,
+  BrowseTheRepos,
+  Repos,
+} from "@lib/templates";
 import { useGetRepos, useGetUser } from "@app/hooks";
+
 const Profile: NextPage = () => {
   const router: NextRouter = useRouter();
   const { id } = router.query;
@@ -25,6 +32,7 @@ const Profile: NextPage = () => {
       <Stats />
       <UsefulCharts />
       <BrowseTheRepos />
+      <Repos />
       <div style={{ height: 1000 }}></div>
     </div>
   );

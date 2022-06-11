@@ -17,6 +17,7 @@
     "@emotion/react": "^11.7.1",
     "@reduxjs/toolkit": "^1.8.0",
     "@tippyjs/react": "^4.2.6",
+    "@types/react-paginate": "^7.1.1",
     "await-to-ts": "^1.0.6",
     "axios": "^0.26.0",
     "baby-i-am-faded": "^4.0.10",
@@ -33,8 +34,10 @@
     "react-firebase-hooks": "^5.0.3",
     "react-hot-toast": "^2.2.0",
     "react-loading-skeleton": "^3.0.3",
+    "react-paginate": "^8.1.3",
     "react-redux": "^7.2.6",
-    "thousands-counter": "^2.1.1"
+    "thousands-counter": "^2.1.1",
+    "use-breakpoint": "^3.0.3"
   },
   "devDependencies": {
     "@types/node": "17.0.16",

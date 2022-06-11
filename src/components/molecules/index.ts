@@ -4,5 +4,16 @@ import { ProfilePicture } from "./ProfilePicture";
 import { Stat } from "./Stat";
 import { ChartTitle } from "./ChartTitle";
 import { Dropdown } from "./Dropdown";
+import { RepoCard } from "./RepoCard";
+import { Pagination } from "./Pagination";
 
-export { SectionTitle, UserCard, ProfilePicture, Stat, ChartTitle, Dropdown };
+export {
+  SectionTitle,
+  UserCard,
+  ProfilePicture,
+  Stat,
+  ChartTitle,
+  Dropdown,
+  RepoCard,
+  Pagination,
+};
