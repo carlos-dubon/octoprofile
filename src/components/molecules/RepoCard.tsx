@@ -30,10 +30,8 @@ const RepoCard: FC<Repo> = ({
     border-radius: 8px;
     background-color: #ffffff;
     padding: 1.325rem;
-    transition: all 0.2s ease-in-out;
     &:hover {
       cursor: pointer;
-      box-shadow: 0px 10px 20px rgba(41, 41, 42, 0);
     }
   `;
 
@@ -115,7 +113,7 @@ const RepoCard: FC<Repo> = ({
             />
             <p css={badgeTextStyles}>{commaSeparateThousands(forks)}</p>
           </Badge>
-          <Badge className="badge">
+          <Badge>
             <p css={badgeTextStyles}>{commaSeparateThousands(size)} KB</p>
           </Badge>
         </div>
