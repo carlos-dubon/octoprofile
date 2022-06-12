@@ -4,7 +4,7 @@ import { css } from "@emotion/react";
 import { RepoCard } from "../molecules/RepoCard";
 import { chunks } from "@lib/helpers";
 import { Repo } from "src/state/slices/reposSlice";
-import { Pagination } from "@lib/molecules";
+import { Pagination, RepoCardSkeleton } from "@lib/molecules";
 import Screens from "@app/styles/breakpoints";
 import { SortBy } from "src/state/slices/searchSlice";
 
@@ -63,10 +63,14 @@ const Repos: FC = () => {
   return (
     <div css={containerStyles}>
       {loading ? (
-        <div>Loading...</div>
+        <div className="container" css={cardContainerStyles}>
+          {new Array(6).fill(0).map((_, index) => (
+            <RepoCardSkeleton key={index} />
+          ))}
+        </div>
       ) : (
         <>
-          {pages ? (
+          {pages && pages[activePage] ? (
             <div>
               <div className="container" css={cardContainerStyles}>
                 {pages[activePage].map((repo, index) => {

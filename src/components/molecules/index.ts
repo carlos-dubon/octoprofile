@@ -6,6 +6,7 @@ import { ChartTitle } from "./ChartTitle";
 import { Dropdown } from "./Dropdown";
 import { RepoCard } from "./RepoCard";
 import { Pagination } from "./Pagination";
+import { RepoCardSkeleton } from "./RepoCardSkeleton";
 
 export {
   SectionTitle,
@@ -16,4 +17,5 @@ export {
   Dropdown,
   RepoCard,
   Pagination,
+  RepoCardSkeleton,
 };
