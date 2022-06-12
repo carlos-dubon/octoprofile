@@ -68,26 +68,22 @@ const Repos: FC = () => {
             <RepoCardSkeleton key={index} />
           ))}
         </div>
-      ) : (
-        <>
-          {pages && pages[activePage] ? (
-            <div>
-              <div className="container" css={cardContainerStyles}>
-                {pages[activePage].map((repo, index) => {
-                  return <RepoCard key={index} {...repo} />;
-                })}
-              </div>
+      ) : pages && pages[activePage] ? (
+        <div>
+          <div className="container" css={cardContainerStyles}>
+            {pages[activePage].map((repo, index) => {
+              return <RepoCard key={index} {...repo} />;
+            })}
+          </div>
 
-              <Pagination
-                activePage={activePage}
-                setActivePage={setActivePage}
-                pageCount={pages.length}
-              />
-            </div>
-          ) : (
-            <div>No repos found.</div>
-          )}
-        </>
+          <Pagination
+            activePage={activePage}
+            setActivePage={setActivePage}
+            pageCount={pages.length}
+          />
+        </div>
+      ) : (
+        <div>No repos found.</div>
       )}
     </div>
   );
