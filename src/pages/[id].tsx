@@ -9,6 +9,7 @@ import {
   Repos,
 } from "@lib/templates";
 import { useGetRepos, useGetUser } from "@app/hooks";
+import { Footer } from "@lib/organisms";
 
 const Profile: NextPage = () => {
   const router: NextRouter = useRouter();
@@ -33,7 +34,7 @@ const Profile: NextPage = () => {
       <UsefulCharts />
       <BrowseTheRepos />
       <Repos />
-      <div style={{ height: 1000 }}></div>
+      <Footer />
     </div>
   );
 };

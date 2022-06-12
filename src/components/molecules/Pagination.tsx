@@ -25,7 +25,10 @@ const Pagination: FC<Props> = ({ activePage, setActivePage, pageCount }) => {
       align-items: center;
       gap: 0.625em;
       list-style-type: none;
-      margin: 3em 1.5em;
+      margin-top: 0;
+      margin-bottom: 0;
+      margin-left: 1.5em;
+      margin-right: 1.5em;
       padding: 0;
     }
 
@@ -58,6 +61,7 @@ const Pagination: FC<Props> = ({ activePage, setActivePage, pageCount }) => {
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-top: 3em;
   `;
 
   const handleChange = (event: { selected: number }): void => {
