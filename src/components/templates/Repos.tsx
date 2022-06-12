@@ -50,6 +50,7 @@ const Repos: FC = () => {
       }
 
       if (query.trim().length > 0) {
+        setActivePage(0);
         repositories = repositories.filter((repo: Repo) =>
           repo.name.toLowerCase().includes(query.toLowerCase())
         );
