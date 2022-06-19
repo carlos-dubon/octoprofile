@@ -1,12 +1,12 @@
 import { useAppSelector, useGetRepos } from "@app/hooks";
 import { FC, useEffect, useState } from "react";
 import { css } from "@emotion/react";
-import { RepoCard } from "../molecules/RepoCard";
 import { chunks } from "@lib/helpers";
-import { Repo } from "src/state/slices/reposSlice";
-import { Pagination, RepoCardSkeleton } from "@lib/molecules";
+import { Pagination, RepoCardSkeleton, RepoCard } from "@lib/molecules";
+import { NotFound } from "@lib/organisms";
 import Screens from "@app/styles/breakpoints";
 import { SortBy } from "src/state/slices/searchSlice";
+import { Repo } from "src/state/slices/reposSlice";
 
 const Repos: FC = () => {
   const query: string = useAppSelector((state) => state.search.query);
@@ -84,7 +84,7 @@ const Repos: FC = () => {
           />
         </div>
       ) : (
-        <div>No repos found.</div>
+        <NotFound />
       )}
     </div>
   );
