@@ -20,6 +20,7 @@ const Repos: FC = () => {
     width: 100%;
     display: flex;
     justify-content: center;
+    margin-bottom: calc(-2em - 2px);
   `;
 
   const cardContainerStyles = css`

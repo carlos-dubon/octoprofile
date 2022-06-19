@@ -8,7 +8,6 @@ const NotFound: FC = () => {
     cursor: default;
     display: flex;
     gap: 1.5em;
-    margin-bottom: -2em;
   `;
 
   const textContainerStyles = css`
