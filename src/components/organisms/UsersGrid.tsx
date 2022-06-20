@@ -2,85 +2,31 @@ import { FC, useEffect, useState } from "react";
 import { css } from "@emotion/react";
 import Screens from "@app/styles/breakpoints";
 import { UserCard } from "@lib/molecules";
+import { useRecentlySearched } from "@app/hooks";
+import { RecentlySearchedUser } from "src/hooks/useRecentlySearched";
+import { Timestamp } from "firebase/firestore";
 
-interface Profile {
-  displayName: string;
-  username: string;
-  url: string;
-  profilePicture: string;
-}
-
-const emptyProfile = (): Profile => {
+const emptyProfile = (): RecentlySearchedUser => {
   return {
-    displayName: "",
+    display_name: "",
+    id: "",
+    profile_picture: "https://via.placeholder.com/150",
     username: "",
-    url: "",
-    profilePicture: "",
+    date: Timestamp.fromDate(new Date()),
   };
 };
 
 const UsersGrid: FC = () => {
-  const [loading, setLoading] = useState<boolean>(true);
-  const [profiles, setProfiles] = useState<Profile[]>(
-    new Array(7).fill(emptyProfile)
+  const [recentlySearched, loading] = useRecentlySearched();
+  const [profiles, setProfiles] = useState<RecentlySearchedUser[]>(
+    new Array(7).fill(emptyProfile())
   );
 
-  // Get the last 7 profiles
-
   useEffect(() => {
-    setTimeout(() => {
-      setProfiles([
-        {
-          displayName: "Marek Brzezinski",
-          username: "marekbrze",
-          url: "https://github.com/marekbrze",
-          profilePicture: "https://avatars.githubusercontent.com/u/1033055?v=4",
-        },
-        {
-          displayName: "Mohammed Madany",
-          username: "MohammedMadany",
-          url: "https://github.com/MohammedMadany",
-          profilePicture:
-            "https://avatars.githubusercontent.com/u/99369298?v=4",
-        },
-        {
-          displayName: "Sonia Chaparro",
-          username: "soniaS4nt",
-          url: "https://github.com/soniaS4nt",
-          profilePicture:
-            "https://avatars.githubusercontent.com/u/83901468?v=4",
-        },
-        {
-          displayName: "Brandon Williams",
-          username: "brando5393",
-          url: "https://github.com/brando5393",
-          profilePicture: "https://avatars.githubusercontent.com/u/4858359?v=4",
-        },
-        {
-          displayName: "Pavel S",
-          username: "PauliCZ44",
-          url: "https://github.com/PauliCZ44",
-          profilePicture:
-            "https://avatars.githubusercontent.com/u/62062095?v=4",
-        },
-        {
-          displayName: "Aurélien Morice",
-          username: "aurelien-morice",
-          url: "https://github.com/aurelien-morice",
-          profilePicture:
-            "https://avatars.githubusercontent.com/u/34755518?v=4",
-        },
-        {
-          displayName: "Derek Sneddon",
-          username: "dsneddon00",
-          url: "https://github.com/dsneddon00",
-          profilePicture:
-            "https://avatars.githubusercontent.com/u/59843849?v=4",
-        },
-      ]);
-      setLoading(false);
-    }, 5000);
-  }, []);
+    if (!loading && recentlySearched) {
+      setProfiles(recentlySearched);
+    }
+  }, [recentlySearched, loading]);
 
   const gridStyles = css`
     display: grid;
@@ -121,8 +67,8 @@ const UsersGrid: FC = () => {
               <UserCard loading />
             ) : (
               <UserCard
-                displayName={profile.displayName}
-                picture={profile.profilePicture}
+                displayName={profile.display_name}
+                picture={profile.profile_picture}
                 url={`/${profile.username}`}
                 username={profile.username}
                 loading={false}

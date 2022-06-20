@@ -7,7 +7,7 @@ import bands from "public/bands.svg";
 import externalLink from "public/icons/externalLink.svg";
 import Image from "next/image";
 import { Button } from "@lib/atoms";
-import { UsersGrid } from "../organisms/UsersGrid";
+import { UsersGrid } from "@lib/organisms";
 
 const RecentlySearched: FC = () => {
   const containerStyles = css`
