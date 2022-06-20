@@ -8,7 +8,7 @@ import {
   BrowseTheRepos,
   Repos,
 } from "@lib/templates";
-import { useGetRepos, useGetUser } from "@app/hooks";
+import { useGetRepos, useGetUser, useSetRecentlySearched } from "@app/hooks";
 import { Footer } from "@lib/organisms";
 
 const Profile: NextPage = () => {
@@ -17,6 +17,8 @@ const Profile: NextPage = () => {
 
   const [user] = useGetUser(id?.toString());
   const [] = useGetRepos(user.username);
+
+  useSetRecentlySearched(user);
 
   return (
     <div>
