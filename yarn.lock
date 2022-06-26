@@ -2497,6 +2497,11 @@ source-map-js@^1.0.1:
   resolved "https://registry.npmjs.org/source-map-js/-/source-map-js-1.0.2.tgz"
   integrity sha512-R0XvVJ9WusLiqTCEiGCmICCMplcCkIwwR11mOSD9CR5u+IXYdiseeEuXCVAjS54zqwkLcPNnmU4OeJ6tUrWhDw==
 
+spinners-react@^1.0.7:
+  version "1.0.7"
+  resolved "https://registry.yarnpkg.com/spinners-react/-/spinners-react-1.0.7.tgz#237e3e6f5fe2e6319083eb8703372e728eb2a304"
+  integrity sha512-Xcgpc7Ybm6HOrpCVJjbH1G/NV852HaV4Zc9T1sJ2+S2hn05lGiBZS1dBOKGLc1kp8wv2sd3wtt94I/NNqDjs3Q==
+
 string-width@^4.1.0, string-width@^4.2.0:
   version "4.2.3"
   resolved "https://registry.yarnpkg.com/string-width/-/string-width-4.2.3.tgz#269c7117d27b05ad2e536830a8ec895ef9c6d010"
