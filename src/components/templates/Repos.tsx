@@ -78,11 +78,13 @@ const Repos: FC = () => {
             })}
           </div>
 
-          <Pagination
-            activePage={activePage}
-            setActivePage={setActivePage}
-            pageCount={pages.length}
-          />
+          {pages.length > 1 && (
+            <Pagination
+              activePage={activePage}
+              setActivePage={setActivePage}
+              pageCount={pages.length}
+            />
+          )}
         </div>
       ) : (
         <NotFound />

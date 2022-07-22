@@ -30,8 +30,11 @@ const RepoCard: FC<Repo> = ({
     border-radius: 8px;
     background-color: #ffffff;
     padding: 1.325rem;
+    transition: all 0.2s ease-in-out;
     &:hover {
       cursor: pointer;
+      transform: translateY(-2%);
+      box-shadow: 0px 10px 20px rgba(41, 41, 42, 0.09);
     }
   `;
 
