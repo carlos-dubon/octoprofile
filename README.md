@@ -16,7 +16,7 @@
 - 🔥 [Firebase](https://firebase.google.com) - A platform developed by Google for creating mobile and web applications.
 - 📝 [Formik](https://formik.org/) - The world's most popular open source form library for React.
 - 🌐 [Redux](https://redux.js.org/) - An open-source JavaScript library for managing and centralizing application state.
-- 🔃 [Axios](https://redux.js.org/) - Promise based HTTP client for the browser and Node.js.
+- 🔃 [Axios](https://axios-http.com/) - Promise based HTTP client for the browser and Node.js.
 
 ## 🚀 Getting started
 
