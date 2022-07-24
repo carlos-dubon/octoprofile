@@ -1,34 +1,55 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+![octoprofile](https://socialify.git.ci/carlos-dubon/octoprofile/image?description=1&font=Raleway&forks=1&language=1&logo=https%3A%2F%2Fraw.githubusercontent.com%2Fcarlos-dubon%2Foctoprofile%2F2671077931326be93482cd20b4bee50ab1fdbc51%2Fpublic%2Fisotype.svg&name=1&owner=1&pulls=1&stargazers=1&theme=Light)
 
-## Getting Started
+<h3 align="center">
+   <a href="https://myoctoprofile.vercel.app/" >
+ Project site
+  </a>
+</h3>
 
-First, run the development server:
+## 📦 Packages
+
+- ⚡️ [Next.js](https://nextjs.org/) - The React Framework for Production.
+- ⚛️ [React.js](https://reactjs.org/) - A JavaScript library for building user interfaces.
+- 💙 [TypeScript](https://www.typescriptlang.org/) - A superset of JavaScript.
+- 💅 [Emotion](https://emotion.sh/docs/introduction) - A library designed for writing css styles with JavaScript.
+- 📊 [Chart.js](https://www.chartjs.org/) - Simple yet flexible JavaScript charting for designers & developers.
+- 🔥 [Firebase](https://firebase.google.com) - A platform developed by Google for creating mobile and web applications.
+- 📝 [Formik](https://formik.org/) - The world's most popular open source form library for React.
+- 🌐 [Redux](https://redux.js.org/) - An open-source JavaScript library for managing and centralizing application state.
+- 🔃 [Axios](https://redux.js.org/) - Promise based HTTP client for the browser and Node.js.
+
+## 🚀 Getting started
+
+You need:
+
+- [Node.js 16+](https://nodejs.org/en/)
+- [Yarn](https://yarnpkg.com/)
+- [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
+
+1. Clone the repository:
 
 ```bash
-npm run dev
-# or
-yarn dev
+$ gh repo clone carlos-dubon/octoprofile
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. Install the dependencies:
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+```bash
+$ yarn install
+```
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+3. Run:
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+```bash
+$ yarn dev
+```
 
-## Learn More
+## 📸 Screenshots
 
-To learn more about Next.js, take a look at the following resources:
+![2022-07-23-19_53_33](.github/readme/2022-07-23-19_53_33.png)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+![2022-07-23-19_48_07](.github/readme/2022-07-23-19_48_07.png)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## ☀️ License
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+[MIT](./LICENSE)
