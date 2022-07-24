@@ -1,4 +1,4 @@
-![octoprofile](https://socialify.git.ci/carlos-dubon/octoprofile/image?description=1&font=Raleway&forks=1&language=1&logo=https%3A%2F%2Fraw.githubusercontent.com%2Fcarlos-dubon%2Foctoprofile%2F2671077931326be93482cd20b4bee50ab1fdbc51%2Fpublic%2Fisotype.svg&name=1&owner=1&pulls=1&stargazers=1&theme=Light)
+![octoprofile](https://socialify.git.ci/carlos-dubon/octoprofile/image?description=1&forks=1&language=1&logo=https%3A%2F%2Fraw.githubusercontent.com%2Fcarlos-dubon%2Foctoprofile%2Fd458a0dcda83c5ac5f7474b6d0f6190770561409%2Fpublic%2Fisotype.svg&name=1&owner=1&pattern=Formal%20Invitation&pulls=1&stargazers=1&theme=Light)
 
 <h3 align="center">
    <a href="https://myoctoprofile.vercel.app/" >
