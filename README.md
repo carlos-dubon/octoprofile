@@ -9,9 +9,9 @@
 </h3>
 
 <p align="center">
-  <img src="https://img.shields.io/github/stars/carlos-dubon/octoprofile?style=flat-plastic" alt="Stars">
-  <img src="https://img.shields.io/github/forks/carlos-dubon/octoprofile?style=flat-plastic" alt="Forks">
-  <img src="https://img.shields.io/github/issues-pr/carlos-dubon/octoprofile?style=flat-plastic" alt="Pulls">
+  <img src="https://img.shields.io/github/stars/carlos-dubon/octoprofile?style=plastic" alt="Stars">
+  <img src="https://img.shields.io/github/forks/carlos-dubon/octoprofile?style=plastic" alt="Forks">
+  <img src="https://img.shields.io/github/issues-pr/carlos-dubon/octoprofile?style=plastic" alt="Pulls">
   <img src="https://img.shields.io/github/issues/carlos-dubon/octoprofile?style=plastic" alt="Issues">
 </p>
 
