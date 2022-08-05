@@ -1,19 +1,34 @@
-<p align="center">
-  <img src=".github/readme/banner.svg" alt="Banner">
+<h1 align="center">OctoProfile 🐙</h1>
+
+<p align="center" style="font-size: 1.2rem">
+  A nicer look at your GitHub profile and repositories. With data visualizations
+  of your languages and stars.
 </p>
 
-<h3 align="center">
-   <a href="https://myoctoprofile.vercel.app/">
- Project site
+<div align="center">
+  <a href="https://myoctoprofile.vercel.app/">
+    <b style="font-size: 1.2rem">Project site</b>
   </a>
-</h3>
+</div>
 
-<p align="center">
-  <img src="https://img.shields.io/github/stars/carlos-dubon/octoprofile?style=plastic" alt="Stars">
-  <img src="https://img.shields.io/github/forks/carlos-dubon/octoprofile?style=plastic" alt="Forks">
-  <img src="https://img.shields.io/github/issues-pr/carlos-dubon/octoprofile?style=plastic" alt="Pulls">
-  <img src="https://img.shields.io/github/issues/carlos-dubon/octoprofile?style=plastic" alt="Issues">
-</p>
+<hr />
+
+<img
+  src="https://img.shields.io/github/stars/carlos-dubon/octoprofile?style=flat-square"
+  alt="Stars"
+/>
+<img
+  src="https://img.shields.io/github/forks/carlos-dubon/octoprofile?style=flat-square"
+  alt="Forks"
+/>
+<img
+  src="https://img.shields.io/github/issues-pr/carlos-dubon/octoprofile?style=flat-square"
+  alt="Pulls"
+/>
+<img
+  src="https://img.shields.io/github/issues/carlos-dubon/octoprofile?style=flat-square"
+  alt="Issues"
+/>
 
 ## 📦 Packages
 
