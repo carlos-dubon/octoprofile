@@ -20,14 +20,14 @@ const Hero: FC = () => {
       const errors: any = {};
 
       if (!values.username) {
-        errors.username = "Este campo es obligatorio.";
+        errors.username = "This field is required.";
       }
 
       if (
         values.username &&
         !/^[a-z\d](?:[a-z\d]|-(?=[a-z\d])){0,38}$/i.test(values.username)
       ) {
-        errors.username = "Nombre de usuario inválido";
+        errors.username = "Invalid username";
       }
 
       return errors;
