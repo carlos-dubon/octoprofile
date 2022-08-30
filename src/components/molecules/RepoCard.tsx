@@ -23,6 +23,7 @@ const RepoCard: FC<Repo> = ({
 
   const containerStyles = css`
     width: 100%;
+    max-width: 346px;
     height: 12.813rem;
     display: flex;
     flex-direction: column;
