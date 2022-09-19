@@ -36,6 +36,7 @@
 - ⚛️ [React.js](https://reactjs.org/) - A JavaScript library for building user interfaces.
 - 💙 [TypeScript](https://www.typescriptlang.org/) - A superset of JavaScript.
 - 💅 [Emotion](https://emotion.sh/docs/introduction) - A library designed for writing css styles with JavaScript.
+- 💥 [Framer Motion](https://www.framer.com/motion/) - A production-ready motion library for React.
 - 📊 [Chart.js](https://www.chartjs.org/) - Simple yet flexible JavaScript charting for designers & developers.
 - 🔥 [Firebase](https://firebase.google.com) - A platform developed by Google for creating mobile and web applications.
 - 📝 [Formik](https://formik.org/) - The world's most popular open source form library for React.
