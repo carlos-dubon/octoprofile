@@ -7,6 +7,7 @@ import GhColors from "gh-lang-colors";
 import { commaSeparateThousands, truncateString } from "@lib/helpers";
 import Image from "next/image";
 import Link from "next/link";
+import { motion } from "framer-motion";
 
 const RepoCard: FC<Repo> = ({
   name,
@@ -27,15 +28,11 @@ const RepoCard: FC<Repo> = ({
     height: 12.813rem;
     display: flex;
     flex-direction: column;
-    box-shadow: 0px 10px 20px rgba(41, 41, 42, 0.07);
     border-radius: 8px;
     background-color: #ffffff;
     padding: 1.325rem;
-    transition: all 0.2s ease-in-out;
     &:hover {
       cursor: pointer;
-      transform: translateY(-2%);
-      box-shadow: 0px 10px 20px rgba(41, 41, 42, 0.09);
     }
   `;
 
@@ -85,7 +82,15 @@ const RepoCard: FC<Repo> = ({
 
   return (
     <Link href={url} passHref>
-      <a target="_blank" css={containerStyles}>
+      <motion.a
+        target="_blank"
+        css={containerStyles}
+        animate={{ boxShadow: "0px 10px 20px rgba(41, 41, 42, 0.07)" }}
+        whileHover={{
+          y: -6,
+          boxShadow: "0px 10px 20px rgba(41, 41, 42, 0.09)",
+        }}
+      >
         <p css={titleStyles}>{name}</p>
         <p css={descriptionStyles}>{truncateString(description || "", 100)}</p>
         <div css={badgeContainerStyles}>
@@ -121,7 +126,7 @@ const RepoCard: FC<Repo> = ({
             <p css={badgeTextStyles}>{commaSeparateThousands(size)} KB</p>
           </Badge>
         </div>
-      </a>
+      </motion.a>
     </Link>
   );
 };
