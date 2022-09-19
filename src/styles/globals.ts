@@ -2,8 +2,6 @@ import { css, SerializedStyles } from "@emotion/react";
 import Screens from "@app/styles/breakpoints";
 
 const globalStyles: SerializedStyles = css`
-  @import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap");
-
   /* Text Selection Color */
   ::selection {
     background: rgba(198, 152, 250, 0.4);
