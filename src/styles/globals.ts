@@ -17,7 +17,8 @@ const globalStyles: SerializedStyles = css`
   body {
     padding: 0;
     margin: 0;
-    font-family: "Inter", sans-serif;
+    font-family: "Inter", -apple-system, BlinkMacSystemFont, Segoe UI,
+      sans-serif;
     overflow-x: hidden;
     position: relative;
   }

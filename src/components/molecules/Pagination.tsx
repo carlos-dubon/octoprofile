@@ -45,7 +45,10 @@ const Pagination: FC<Props> = ({ activePage, setActivePage, pageCount }) => {
       justify-content: center;
       align-items: center;
       border-radius: 6px;
-      transition: all 0.2s ease-in-out;
+      transition: all 0.1s ease-in-out;
+      &:hover {
+        opacity: 0.8;
+      }
     }
 
     .pagination-link-active {
@@ -53,7 +56,9 @@ const Pagination: FC<Props> = ({ activePage, setActivePage, pageCount }) => {
       color: #ffffff;
       width: 50px;
       height: 44px;
-      cursor: default;
+      &:hover {
+        opacity: 0.95 !important;
+      }
     }
   `;
 
