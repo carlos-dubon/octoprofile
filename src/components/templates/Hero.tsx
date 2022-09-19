@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, useRef } from "react";
 import { css } from "@emotion/react";
 import Colors from "@app/styles/colors";
 import { Input, ErrorMsg } from "@lib/atoms";
@@ -6,11 +6,14 @@ import { useFormik } from "formik";
 import { NextRouter, useRouter } from "next/router";
 import Image from "next/image";
 import appPreview from "public/preview.png";
-import { Faded } from "baby-i-am-faded";
 import Screens from "@app/styles/breakpoints";
+import { useInView, motion } from "framer-motion";
 
 const Hero: FC = () => {
   const router: NextRouter = useRouter();
+
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true });
 
   const usernameInput = useFormik({
     initialValues: {
@@ -158,10 +161,19 @@ const Hero: FC = () => {
           </form>
         </div>
         <div css={imageAreaStyles}>
-          <Faded
-            whenInView
-            animationName="babyFadeInRight"
-            triggerOnce
+          <motion.div
+            ref={ref}
+            initial={{ x: 50, opacity: 0 }}
+            animate={{
+              x: isInView ? 0 : 50,
+              opacity: isInView ? 1 : 0,
+              transition: {
+                type: "tween",
+                delay: 0.2,
+                ease: [0.17, 0.55, 0.55, 1],
+                duration: 0.4,
+              },
+            }}
             css={css`
               @media (min-width: ${Screens.sm}px) {
                 display: flex;
@@ -192,7 +204,7 @@ const Hero: FC = () => {
                 priority
               />
             </div>
-          </Faded>
+          </motion.div>
         </div>
       </div>
     </>
