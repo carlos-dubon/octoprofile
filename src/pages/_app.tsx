@@ -42,6 +42,9 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
     height: 40px;
     border-radius: 4px;
     box-shadow: 0px 10px 20px rgba(41, 41, 42, 0.07);
+    &:hover {
+      opacity: 0.95;
+    }
   `;
 
   const goToTopArrowStyles = css`
