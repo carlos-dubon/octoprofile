@@ -169,6 +169,7 @@ const Hero: FC = () => {
               opacity: isInView ? 1 : 0,
               transition: {
                 type: "tween",
+                delay: 0.1,
                 ease: [0.17, 0.55, 0.55, 1],
                 duration: 0.4,
               },
