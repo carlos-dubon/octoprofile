@@ -1,7 +1,11 @@
-import { FC } from "react";
+import { FC, ReactNode } from "react";
 import { css } from "@emotion/react";
 
-const TranslucentIcon: FC = ({ children }) => {
+interface Props {
+  children: ReactNode;
+}
+
+const TranslucentIcon: FC<Props> = ({ children }) => {
   const containerStyles = css`
     height: 2rem;
     width: 2rem;
