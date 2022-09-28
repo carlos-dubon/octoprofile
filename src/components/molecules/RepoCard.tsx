@@ -87,8 +87,12 @@ const RepoCard: FC<Repo> = ({
         css={containerStyles}
         animate={{ boxShadow: "0px 10px 20px rgba(41, 41, 42, 0.07)" }}
         whileHover={{
-          y: -6,
+          y: -5,
           boxShadow: "0px 10px 20px rgba(41, 41, 42, 0.09)",
+          transition: {
+            type: "tween",
+            duration: 0.2,
+          },
         }}
       >
         <p css={titleStyles}>{name}</p>
