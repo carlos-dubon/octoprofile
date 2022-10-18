@@ -122,7 +122,7 @@ const UsefulCharts: FC = () => {
         />
 
         <div css={cardContainerStyles}>
-          <Card css={cardStyles} index={0}>
+          <Card css={cardStyles}>
             <ChartTitle
               title="Top Languages"
               subtitle="Your most used languages"
@@ -138,7 +138,7 @@ const UsefulCharts: FC = () => {
               )}
             </div>
           </Card>
-          <Card css={cardStyles} index={1}>
+          <Card css={cardStyles}>
             <ChartTitle
               title="Most starred"
               subtitle="Your most starred repositories"
@@ -155,7 +155,7 @@ const UsefulCharts: FC = () => {
               )}
             </div>
           </Card>
-          <Card css={cardStyles} index={2}>
+          <Card css={cardStyles}>
             <ChartTitle
               title="Stars per Language"
               subtitle="Number of stars per language"
