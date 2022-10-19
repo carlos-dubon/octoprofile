@@ -2420,6 +2420,11 @@ react-loading-skeleton@^3.0.3:
   resolved "https://registry.yarnpkg.com/react-loading-skeleton/-/react-loading-skeleton-3.0.3.tgz#4f45467cf3193fb25456bc02aeb81922b82b8f1f"
   integrity sha512-HPkEqQGwmbg1ImcYA9n4hDiLC3u92xUdU+sSfrv/9l3lNBChAubcl1azjV2WakapdkbA3gko+hPzZkZGIb/9xA==
 
+react-medium-image-zoom@^5.1.1:
+  version "5.1.1"
+  resolved "https://registry.yarnpkg.com/react-medium-image-zoom/-/react-medium-image-zoom-5.1.1.tgz#5369853c9a2ae9b09702deb91483267dabe7893c"
+  integrity sha512-6YVFpFy2zmFxSLHV5qOxmyH1QJIKCCbGU6STFr05iokvXhNO7yDS7rR3jlr9SV4QUgwrGLAWkmiqF2UPP2wmXA==
+
 react-paginate@^8.1.3:
   version "8.1.3"
   resolved "https://registry.yarnpkg.com/react-paginate/-/react-paginate-8.1.3.tgz#cd6f3cb8a56b47617a61a6a52e3d7c662ad9b91b"

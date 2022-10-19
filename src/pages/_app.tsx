@@ -11,6 +11,7 @@ import { useScroll, motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import Colors from "@app/styles/colors";
 import Image from "next/image";
+import "react-medium-image-zoom/dist/styles.css";
 
 const MyApp = ({ Component, pageProps }: AppProps) => {
   const { scrollY } = useScroll();

@@ -69,7 +69,7 @@ const Pagination: FC<Props> = ({ activePage, setActivePage, pageCount }) => {
       align-items: center;
       cursor: pointer;
       height: 40px;
-      color: ${Colors.purple900};
+      color: ${Colors.purple800};
     }
   `;
 

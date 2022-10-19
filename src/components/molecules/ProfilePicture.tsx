@@ -1,9 +1,10 @@
+/* eslint-disable @next/next/no-img-element */
 import { FC } from "react";
 import { css } from "@emotion/react";
 import Skeleton from "react-loading-skeleton";
-import Image from "next/image";
 import { useGetUser } from "@app/hooks";
 import Screens from "@app/styles/breakpoints";
+import Zoom from "react-medium-image-zoom";
 
 const ProfilePicture: FC = () => {
   const containerStyles = css`
@@ -38,6 +39,18 @@ const ProfilePicture: FC = () => {
     top: -2px;
   `;
 
+  const imageWrapperStyles = css`
+    div {
+      width: 194px;
+      height: 194px;
+      position: relative;
+      @media (min-width: ${Screens.sm}px) {
+        width: 210px;
+        height: 210px;
+      }
+    }
+  `;
+
   const imageContainerStyles = css`
     width: 194px;
     height: 194px;
@@ -59,8 +72,14 @@ const ProfilePicture: FC = () => {
           <Skeleton width="100%" height="100%" circle css={skeletonStyles} />
         </div>
       ) : (
-        <div css={imageContainerStyles}>
-          <Image src={user.avatarUrl} alt={user.displayName} layout="fill" />
+        <div css={imageWrapperStyles}>
+          <Zoom zoomMargin={28}>
+            <img
+              css={imageContainerStyles}
+              alt={user.displayName}
+              src={user.avatarUrl}
+            />
+          </Zoom>
         </div>
       )}
     </div>
