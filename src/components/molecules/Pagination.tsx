@@ -20,7 +20,7 @@ const Pagination: FC<Props> = ({ activePage, setActivePage, pageCount }) => {
     }
 
     .pagination {
-      height: 44px;
+      height: 40px;
       display: flex;
       align-items: center;
       gap: 0.625em;
@@ -35,7 +35,7 @@ const Pagination: FC<Props> = ({ activePage, setActivePage, pageCount }) => {
     .pagination-link {
       user-select: none;
       cursor: pointer;
-      width: 50px;
+      width: 40px;
       height: 40px;
       background-color: ${Colors.purple100};
       color: ${Colors.purple900};
@@ -44,6 +44,7 @@ const Pagination: FC<Props> = ({ activePage, setActivePage, pageCount }) => {
       display: flex;
       justify-content: center;
       align-items: center;
+      box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
       border-radius: 6px;
       transition: all 0.1s ease-in-out;
       &:hover {
@@ -53,12 +54,22 @@ const Pagination: FC<Props> = ({ activePage, setActivePage, pageCount }) => {
 
     .pagination-link-active {
       background-color: ${Colors.purple900};
+      box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
       color: #ffffff;
-      width: 50px;
-      height: 44px;
+      width: 40px;
+      height: 40px;
       &:hover {
         opacity: 0.95 !important;
       }
+    }
+
+    .pagination-break {
+      user-select: none;
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+      height: 40px;
+      color: ${Colors.purple900};
     }
   `;
 
@@ -74,12 +85,12 @@ const Pagination: FC<Props> = ({ activePage, setActivePage, pageCount }) => {
     setActivePage(page);
   };
 
-  const goToLastPage = (): void => {
-    setActivePage(pageCount - 1);
+  const prev = (): void => {
+    setActivePage(activePage - 1);
   };
 
-  const goToFirstPage = (): void => {
-    setActivePage(0);
+  const next = (): void => {
+    setActivePage(activePage + 1);
   };
 
   const { breakpoint } = useBreakpoint(breakpoints, "md");
@@ -89,16 +100,17 @@ const Pagination: FC<Props> = ({ activePage, setActivePage, pageCount }) => {
       <Global styles={globalStyles} />
       <div css={containerStyles}>
         <GoToPage
-          page="first"
+          page="prev"
           disabled={activePage == 0}
-          onClick={() => goToFirstPage()}
+          onClick={() => prev()}
         />
         <ReactPaginate
           forcePage={activePage}
           onPageChange={handleChange}
-          pageRangeDisplayed={breakpoint == "mobile" ? 2 : 4}
-          marginPagesDisplayed={0}
-          breakLabel=""
+          pageRangeDisplayed={breakpoint == "mobile" ? 1 : 3}
+          marginPagesDisplayed={breakpoint == "mobile" ? 1 : 2}
+          breakLabel="..."
+          breakClassName="pagination-break"
           pageCount={pageCount}
           previousClassName="pagination-hide"
           nextClassName="pagination-hide"
@@ -107,9 +119,9 @@ const Pagination: FC<Props> = ({ activePage, setActivePage, pageCount }) => {
           activeLinkClassName="pagination-link-active"
         />
         <GoToPage
-          page="last"
+          page="next"
           disabled={activePage == pageCount - 1}
-          onClick={() => goToLastPage()}
+          onClick={() => next()}
         />
       </div>
     </>
