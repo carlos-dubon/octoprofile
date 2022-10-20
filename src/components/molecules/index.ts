@@ -5,6 +5,7 @@ import { Stat } from "./Stat";
 import { ChartTitle } from "./ChartTitle";
 import { Dropdown } from "./Dropdown";
 import { RepoCard } from "./RepoCard";
+import { FunctionalRepoCard } from "./RepoCard";
 import { Pagination } from "./Pagination";
 import { RepoCardSkeleton } from "./RepoCardSkeleton";
 
@@ -18,4 +19,5 @@ export {
   RepoCard,
   Pagination,
   RepoCardSkeleton,
+  FunctionalRepoCard,
 };

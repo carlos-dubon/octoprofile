@@ -2,11 +2,16 @@ import { useAppSelector, useGetRepos } from "@app/hooks";
 import { FC, useEffect, useState } from "react";
 import { css } from "@emotion/react";
 import { chunks } from "@lib/helpers";
-import { Pagination, RepoCardSkeleton, RepoCard } from "@lib/molecules";
+import {
+  Pagination,
+  RepoCardSkeleton,
+  FunctionalRepoCard,
+} from "@lib/molecules";
 import { NotFound } from "@lib/organisms";
 import Screens from "@app/styles/breakpoints";
 import { SortBy } from "src/state/slices/searchSlice";
 import { Repo } from "src/state/slices/reposSlice";
+import FlipMove from "react-flip-move";
 
 const Repos: FC = () => {
   const query: string = useAppSelector((state) => state.search.query);
@@ -72,11 +77,11 @@ const Repos: FC = () => {
         </div>
       ) : pages && pages[activePage] ? (
         <div>
-          <div className="container" css={cardContainerStyles}>
-            {pages[activePage].map((repo, index) => {
-              return <RepoCard key={index} {...repo} />;
+          <FlipMove className="container" css={cardContainerStyles}>
+            {pages[activePage].map((repo) => {
+              return <FunctionalRepoCard key={repo.id} {...repo} />;
             })}
-          </div>
+          </FlipMove>
 
           {pages.length > 1 && (
             <Pagination

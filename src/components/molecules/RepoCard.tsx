@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, forwardRef, LegacyRef } from "react";
 import { css } from "@emotion/react";
 import Colors from "@app/styles/colors";
 import { Repo } from "src/state/slices/reposSlice";
@@ -8,6 +8,24 @@ import { commaSeparateThousands, truncateString } from "@lib/helpers";
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
+
+const FunctionalRepoCard = forwardRef(
+  (repo: Repo, ref: LegacyRef<HTMLDivElement>) => {
+    const containerStyles = css`
+      width: 100%;
+      max-width: 346px;
+      height: 12.813rem;
+    `;
+
+    return (
+      <div ref={ref} css={containerStyles}>
+        <RepoCard {...repo} />
+      </div>
+    );
+  }
+);
+
+FunctionalRepoCard.displayName = "FunctionalRepoCard";
 
 const RepoCard: FC<Repo> = ({
   name,
@@ -24,8 +42,7 @@ const RepoCard: FC<Repo> = ({
 
   const containerStyles = css`
     width: 100%;
-    max-width: 346px;
-    height: 12.813rem;
+    height: 100%;
     display: flex;
     flex-direction: column;
     border-radius: 8px;
@@ -88,7 +105,7 @@ const RepoCard: FC<Repo> = ({
         animate={{ boxShadow: "0px 10px 20px rgba(41, 41, 42, 0.07)" }}
         whileHover={{
           y: -5,
-          boxShadow: "0px 10px 20px rgba(41, 41, 42, 0.09)",
+          boxShadow: "0px 10px 20px rgba(41, 41, 42, 0.13)",
           transition: {
             type: "tween",
             duration: 0.2,
@@ -135,4 +152,4 @@ const RepoCard: FC<Repo> = ({
   );
 };
 
-export { RepoCard };
+export { RepoCard, FunctionalRepoCard };

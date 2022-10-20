@@ -1,6 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 export interface Repo {
+  id: string;
   name: string;
   description: string | null;
   language: string | null;

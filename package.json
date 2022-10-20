@@ -34,6 +34,7 @@
     "react-chartjs-2": "^4.0.1",
     "react-dom": "^18.2.0",
     "react-firebase-hooks": "^5.0.3",
+    "react-flip-move": "^3.0.4",
     "react-hot-toast": "^2.2.0",
     "react-loading-skeleton": "^3.0.3",
     "react-medium-image-zoom": "^5.1.1",

@@ -5,6 +5,7 @@ import { useAppSelector, useAppDispatch, useGetUser } from "@app/hooks";
 import axios from "axios";
 import to from "await-to-ts";
 import { Repo, setRepos } from "src/state/slices/reposSlice";
+import { v4 as uuidv4 } from "uuid";
 
 // eslint-disable-next-line valid-jsdoc
 /**
@@ -48,7 +49,10 @@ const useGetRepos = (username?: string): [Repo[], boolean, Error | null] => {
       }, <GitHubApiRepo[]>[]);
 
       const repos: Repo[] = mergedRes.map((repo: GitHubApiRepo) => {
+        const id = uuidv4();
+
         return {
+          id: id,
           name: repo.name,
           description: repo.description,
           url: repo.html_url,
