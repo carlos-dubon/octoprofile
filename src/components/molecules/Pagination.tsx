@@ -69,7 +69,7 @@ const Pagination: FC<Props> = ({ activePage, setActivePage, pageCount }) => {
       align-items: center;
       cursor: pointer;
       height: 40px;
-      color: ${Colors.purple800};
+      color: ${Colors.purple900};
     }
   `;
 
@@ -111,6 +111,7 @@ const Pagination: FC<Props> = ({ activePage, setActivePage, pageCount }) => {
           marginPagesDisplayed={breakpoint == "mobile" ? 1 : 2}
           breakLabel="..."
           breakClassName="pagination-break"
+          breakLinkClassName="pagination-break"
           pageCount={pageCount}
           previousClassName="pagination-hide"
           nextClassName="pagination-hide"
