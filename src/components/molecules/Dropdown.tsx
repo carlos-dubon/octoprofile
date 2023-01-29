@@ -27,6 +27,7 @@ const Dropdown: FC<Props> = ({ defaultValue, values, onChange }) => {
     align-items: center;
     justify-content: center;
     width: 75px;
+    user-select: none;
     height: 100%;
     cursor: pointer;
     gap: 0.8em;
@@ -60,6 +61,7 @@ const Dropdown: FC<Props> = ({ defaultValue, values, onChange }) => {
     width: 120px;
     display: flex;
     align-items: center;
+    user-select: none;
     padding: 0 1.2em;
     cursor: pointer;
     &:hover {
@@ -96,17 +98,19 @@ const Dropdown: FC<Props> = ({ defaultValue, values, onChange }) => {
         />
       </div>
       <div css={dropdownContainerStyles}>
-        {values.map((value, index) => (
-          <div
-            key={index}
-            css={dropdownItemStyles}
-            onClick={() => {
-              handleSelect(value);
-            }}
-          >
-            {value}
-          </div>
-        ))}
+        {values
+          .filter((option) => option != value)
+          .map((value, index) => (
+            <div
+              key={index}
+              css={dropdownItemStyles}
+              onClick={() => {
+                handleSelect(value);
+              }}
+            >
+              {value}
+            </div>
+          ))}
       </div>
     </div>
   );

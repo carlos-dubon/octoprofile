@@ -69,6 +69,6 @@ $ yarn dev
 
 ## 📸 Screenshots
 
-![2022-07-23-19_53_33](.github/readme/2022-07-23-19_53_33.png)
+![1](.github/readme/1.png)
 
-![2022-07-23-19_48_07](.github/readme/2022-07-23-19_48_07.png)
+![2](.github/readme/2.png)

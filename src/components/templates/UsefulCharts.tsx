@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, useMemo } from "react";
 import { SectionTitle, ChartTitle } from "@lib/molecules";
 import { css } from "@emotion/react";
 import { Card, Loader } from "@lib/atoms";
@@ -34,6 +34,10 @@ ChartJS.register(
 
 const UsefulCharts: FC = () => {
   const [repos, loading] = useGetRepos();
+
+  const mostUsedLanguages = useMemo(() => getMostUsedLanguages(repos), [repos]);
+  const mostStarredRepos = useMemo(() => getMostStarredRepos(repos), [repos]);
+  const starsPerLanguage = useMemo(() => getStarsPerLanguage(repos), [repos]);
 
   const pieChartOptions: ChartOptions = {
     plugins: {
@@ -102,6 +106,15 @@ const UsefulCharts: FC = () => {
     }
   `;
 
+  const noDataToDisplayStyles = css`
+    font-size: 0.8em;
+    @media (min-width: ${Screens.sm}px) {
+      font-size: 1em;
+    }
+    font-weight: 400;
+    color: #b9b9b9;
+  `;
+
   return (
     <div css={containerStyles}>
       <div
@@ -131,10 +144,13 @@ const UsefulCharts: FC = () => {
               {loading ? (
                 <Loader />
               ) : (
-                <Pie
-                  data={getMostUsedLanguages(repos)}
-                  options={pieChartOptions}
-                />
+                <>
+                  {mostUsedLanguages.datasets.at(0)?.data.length ? (
+                    <Pie data={mostUsedLanguages} options={pieChartOptions} />
+                  ) : (
+                    <div css={noDataToDisplayStyles}>No data to display.</div>
+                  )}
+                </>
               )}
             </div>
           </Card>
@@ -148,10 +164,13 @@ const UsefulCharts: FC = () => {
               {loading ? (
                 <Loader />
               ) : (
-                <Bar
-                  data={getMostStarredRepos(repos)}
-                  options={barChartOptions}
-                />
+                <>
+                  {mostStarredRepos.datasets.at(0)?.data.length ? (
+                    <Bar data={mostStarredRepos} options={barChartOptions} />
+                  ) : (
+                    <div css={noDataToDisplayStyles}>No data to display.</div>
+                  )}
+                </>
               )}
             </div>
           </Card>
@@ -164,10 +183,16 @@ const UsefulCharts: FC = () => {
               {loading ? (
                 <Loader />
               ) : (
-                <Doughnut
-                  data={getStarsPerLanguage(repos)}
-                  options={pieChartOptions}
-                />
+                <>
+                  {starsPerLanguage.datasets.at(0)?.data.length ? (
+                    <Doughnut
+                      data={starsPerLanguage}
+                      options={pieChartOptions}
+                    />
+                  ) : (
+                    <div css={noDataToDisplayStyles}>No data to display.</div>
+                  )}
+                </>
               )}
             </div>
           </Card>

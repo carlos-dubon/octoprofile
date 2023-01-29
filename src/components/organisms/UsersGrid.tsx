@@ -67,7 +67,7 @@ const UsersGrid: FC = () => {
               <UserCard loading />
             ) : (
               <UserCard
-                displayName={profile.display_name}
+                displayName={profile.display_name ?? profile.username}
                 picture={profile.profile_picture}
                 url={`/${profile.username}`}
                 username={profile.username}
